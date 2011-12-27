@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AWTTestScript desc="Test">
+  <component class="fr.cnamts.m3.ca.ihm.beneficiaire.BeneficiaireIhm" id="Beneficiaire" index="0" parent="JDesktopPane Instance" title="Beneficiaire" window="PROGRES FAMILLE" />
+  <component class="javax.swing.JMenu" id="Beneficiaire 2" index="1" parent="JMenuBar Instance 2" text="Beneficiaire" window="PROGRES FAMILLE" />
+  <component class="javax.swing.JMenu" id="Beneficiaire 3" index="1" parent="JMenuBar Instance 3" text="Beneficiaire" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JMenu" id="Contexte" index="0" parent="JMenuBar Instance 2" text="Contexte" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JMenu" id="Contexte 2" index="0" parent="JMenuBar Instance 3" text="Contexte" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JMenu" id="Contexte 3" index="0" parent="JMenuBar Instance 4" text="Contexte" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JMenu" id="Contexte 4" index="0" parent="JMenuBar Instance 5" text="Contexte" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JMenuItem" id="Fermer  F4" index="0" parent="JPopupMenu Instance 3" text="Fermer  F4" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JMenuItem" id="Fermer  F4 2" index="0" parent="JPopupMenu Instance 5" text="Fermer  F4" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JMenuItem" id="Fermer  F4 3" index="0" parent="JPopupMenu Instance 6" text="Fermer  F4" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JMenuItem" id="Fermer  F4 4" index="0" parent="JPopupMenu Instance 7" text="Fermer  F4" window="PROGRES FAMILLE 3" />
+  <component class="fr.cnamts.m3.ca.ihm.habilitation.HabilitationMatriculeIhm" id="Identification" parent="PROGRES FAMILLE" title="Identification" />
+  <component class="javax.swing.JButton" id="JButton Instance" index="0" parent="JScrollBar Instance" text="" window="PROGRES - Connexion à un Centre 7" />
+  <component class="javax.swing.JDesktopPane" id="JDesktopPane Instance" index="2" parent="JLayeredPane Instance" window="PROGRES FAMILLE" />
+  <component class="javax.swing.JDesktopPane" id="JDesktopPane Instance 2" index="1" parent="JLayeredPane Instance 2" window="PROGRES FAMILLE" />
+  <component class="javax.swing.JDesktopPane" id="JDesktopPane Instance 3" index="1" parent="JLayeredPane Instance 4" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JLayeredPane" id="JLayeredPane Instance" index="1" parent="JRootPane Instance" window="PROGRES - Connexion à un Centre 2" />
+  <component class="javax.swing.JLayeredPane" id="JLayeredPane Instance 2" index="1" parent="JRootPane Instance 2" window="PROGRES FAMILLE" />
+  <component class="javax.swing.JLayeredPane" id="JLayeredPane Instance 3" index="1" parent="JRootPane Instance 3" window="PROGRES" />
+  <component class="javax.swing.JLayeredPane" id="JLayeredPane Instance 4" index="1" parent="JRootPane Instance 4" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JLayeredPane" id="JLayeredPane Instance 5" index="1" parent="JRootPane Instance 5" window="Identification" />
+  <component class="javax.swing.JLayeredPane" id="JLayeredPane Instance 6" index="1" parent="JRootPane Instance 6" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JLayeredPane" id="JLayeredPane Instance 7" index="1" parent="JRootPane Instance 7" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JMenuBar" id="JMenuBar Instance" index="1" parent="JLayeredPane Instance" window="PROGRES FAMILLE" />
+  <component class="javax.swing.JMenuBar" id="JMenuBar Instance 2" index="0" parent="JLayeredPane Instance 2" window="PROGRES FAMILLE" />
+  <component class="javax.swing.JMenuBar" id="JMenuBar Instance 3" index="0" parent="JLayeredPane Instance 4" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JMenuBar" hOrder="1" id="JMenuBar Instance 4" index="0" parent="JLayeredPane Instance 6" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JMenuBar" id="JMenuBar Instance 5" index="0" parent="JLayeredPane Instance 7" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JPanel" id="JPanel Instance" index="0" parent="JLayeredPane Instance" window="PROGRES - Connexion à un Centre 3" />
+  <component class="javax.swing.JPanel" id="JPanel Instance 2" index="0" parent="JPanel Instance" window="PROGRES - Connexion à un Centre 4" />
+  <component class="javax.swing.JPanel" id="JPanel Instance 3" index="0" parent="JLayeredPane Instance 3" window="PROGRES" />
+  <component class="javax.swing.JPanel" id="JPanel Instance 4" index="0" parent="JViewport Instance 2" window="PROGRES FAMILLE" />
+  <component class="javax.swing.JPanel" id="JPanel Instance 5" index="1" parent="JPanel Instance 3" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JPanel" id="JPanel Instance 6" index="0" parent="JLayeredPane Instance 3" window="PROGRES" />
+  <component class="javax.swing.JPanel" id="JPanel Instance 7" index="0" parent="JLayeredPane Instance 5" window="Identification" />
+  <component class="javax.swing.JPanel" id="JPanel Instance 8" index="0" parent="JLayeredPane Instance 6" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JPanel" id="JPanel Instance 9" index="1" parent="JPanel Instance 8" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JPopupMenu" id="JPopupMenu Instance" index="0" invoker="Lancement" />
+  <component class="javax.swing.JPopupMenu" id="JPopupMenu Instance 2" index="0" invoker="Beneficiaire 2" />
+  <component class="javax.swing.JPopupMenu" id="JPopupMenu Instance 3" index="0" invoker="Contexte" />
+  <component class="javax.swing.JPopupMenu" id="JPopupMenu Instance 4" index="0" invoker="Beneficiaire 3" />
+  <component class="javax.swing.JPopupMenu" id="JPopupMenu Instance 5" index="0" invoker="Contexte 2" />
+  <component class="javax.swing.JPopupMenu" id="JPopupMenu Instance 6" index="0" invoker="Contexte 3" />
+  <component class="javax.swing.JPopupMenu" id="JPopupMenu Instance 7" index="0" invoker="Contexte 4" />
+  <component class="javax.swing.JRootPane" id="JRootPane Instance" index="0" parent="PROGRES - Connexion à un Centre" />
+  <component class="javax.swing.JRootPane" id="JRootPane Instance 2" index="0" parent="Beneficiaire" window="PROGRES FAMILLE" />
+  <component class="javax.swing.JRootPane" id="JRootPane Instance 3" index="0" parent="PROGRES" />
+  <component class="javax.swing.JRootPane" id="JRootPane Instance 4" index="0" parent="Beneficiaire" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JRootPane" id="JRootPane Instance 5" index="0" parent="Identification" />
+  <component class="javax.swing.JRootPane" id="JRootPane Instance 6" index="0" parent="Prévention Bucco-Dentaire" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JRootPane" id="JRootPane Instance 7" index="0" parent="Beneficiaire" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JScrollBar" id="JScrollBar Instance" index="1" parent="JScrollPane Instance" window="PROGRES - Connexion à un Centre 6" />
+  <component class="javax.swing.JScrollPane" id="JScrollPane Instance" index="2" parent="JPanel Instance 2" window="PROGRES - Connexion à un Centre 5" />
+  <component class="javax.swing.JScrollPane" id="JScrollPane Instance 2" index="0" parent="JPanel Instance 3" window="PROGRES FAMILLE" />
+  <component class="javax.swing.JViewport" id="JViewport Instance" index="0" parent="JScrollPane Instance" window="PROGRES - Connexion à un Centre 5" />
+  <component class="javax.swing.JViewport" id="JViewport Instance 2" index="0" parent="JScrollPane Instance 2" window="PROGRES FAMILLE" />
+  <component class="javax.swing.JMenu" id="Lancement" index="0" parent="JMenuBar Instance" text="Lancement" window="PROGRES FAMILLE 2" />
+  <component class="javax.swing.JMenuItem" id="Mise à jour - PE" index="0" parent="JPopupMenu Instance" text="Mise à jour - PE" window="PROGRES FAMILLE 3" />
+  <component class="javax.swing.JButton" id="Oui" index="2" parent="JPanel Instance 3" text="Oui" window="PROGRES" />
+  <component class="javax.swing.JButton" id="Oui 2" index="2" parent="JPanel Instance 6" text="Oui" window="PROGRES" />
+  <component class="fr.cnamts.m3.socle.ihm.impl.M3EcranMessage" id="PROGRES" parent="PROGRES FAMILLE" title="PROGRES" />
+  <component class="fr.cnamts.m3.ca.ihm.habilitation.ChoisirCentreAgentIhm" id="PROGRES - Connexion à un Centre" parent="shared frame" title="PROGRES - Connexion à un Centre" />
+  <component class="fr.cnamts.m3.ca.ihm.habilitation.ChoisirCentreAgentIhm" id="PROGRES - Connexion à un Centre 2" parent="shared frame 2" title="PROGRES - Connexion à un Centre" />
+  <component class="fr.cnamts.m3.ca.ihm.habilitation.ChoisirCentreAgentIhm" id="PROGRES - Connexion à un Centre 3" parent="shared frame 3" title="PROGRES - Connexion à un Centre" />
+  <component class="fr.cnamts.m3.ca.ihm.habilitation.ChoisirCentreAgentIhm" id="PROGRES - Connexion à un Centre 4" parent="shared frame 4" title="PROGRES - Connexion à un Centre" />
+  <component class="fr.cnamts.m3.ca.ihm.habilitation.ChoisirCentreAgentIhm" id="PROGRES - Connexion à un Centre 5" parent="shared frame 5" title="PROGRES - Connexion à un Centre" />
+  <component class="fr.cnamts.m3.ca.ihm.habilitation.ChoisirCentreAgentIhm" id="PROGRES - Connexion à un Centre 6" parent="shared frame 6" title="PROGRES - Connexion à un Centre" />
+  <component class="fr.cnamts.m3.ca.ihm.habilitation.ChoisirCentreAgentIhm" id="PROGRES - Connexion à un Centre 7" parent="shared frame 7" title="PROGRES - Connexion à un Centre" />
+  <component class="fr.cnamts.m3.ca.ihm.MainIhm" id="PROGRES FAMILLE" root="true" title="PROGRES FAMILLE" />
+  <component class="fr.cnamts.m3.ca.ihm.MainIhm" id="PROGRES FAMILLE 2" root="true" title="PROGRES FAMILLE" />
+  <component class="fr.cnamts.m3.ca.ihm.MainIhm" id="PROGRES FAMILLE 3" root="true" title="PROGRES FAMILLE" />
+  <component class="fr.cnamts.m3.ca.ihm.preventionBuccoDentaire.PreventionBuccoDentaireIhm" id="Prévention Bucco-Dentaire" index="0" parent="JDesktopPane Instance 2" title="Prévention Bucco-Dentaire" window="PROGRES FAMILLE" />
+  <component class="javax.swing.JMenuItem" id="Quitter    Ctrl+F4" index="2" parent="JPopupMenu Instance 3" text="Quitter    Ctrl+F4" window="PROGRES FAMILLE 3" />
+  <component class="fr.cnamts.m3.ca.recoursContreTiers.ihm.RecoursContreTiersIhm" id="Recours contre Tiers" index="0" parent="JDesktopPane Instance 3" title="Recours contre Tiers" window="PROGRES FAMILLE 3" />
+  <component class="fr.cnamts.m3.socle.ihm.impl.M3Button" icon="ICUPBAB1.gif" id="_btAbandonner" index="1" name="_btAbandonner" parent="JPanel Instance 4" text="Abandonner" window="PROGRES FAMILLE 3" />
+  <component class="fr.cnamts.m3.socle.ihm.impl.M3Button" icon="ICUPBIN1.gif" id="_btInitialiser" index="6" name="_btInitialiser" parent="JPanel Instance 9" text="Initialiser" window="PROGRES FAMILLE 3" />
+  <component class="fr.cnamts.m3.socle.ihm.impl.M3Button" icon="ICUPBSU1.gif" id="_btSupprimer" index="9" name="_btSupprimer" parent="JPanel Instance 5" text="Supprimer" window="PROGRES FAMILLE 3" />
+  <component class="fr.cnamts.m3.socle.ihm.impl.M3Button" icon="ICUPBVA1.gif" id="_btValider" index="2" name="_btValider" parent="JPanel Instance" text="Valider" window="PROGRES - Connexion à un Centre 5" />
+  <component class="fr.cnamts.m3.socle.ihm.impl.M3MenuItem" id="_jMenuItemPPD" index="1" name="_jMenuItemPPD" parent="JPopupMenu Instance 2" text="Prévention bucco dentaire" window="PROGRES FAMILLE" />
+  <component class="fr.cnamts.m3.socle.ihm.impl.M3MenuItem" id="_jMenuItemRCT" index="0" name="_jMenuItemRCT" parent="JPopupMenu Instance 4" text="Recours contre tiers" window="PROGRES FAMILLE 3" />
+  <component class="fr.cnamts.m3.socle.ihm.impl.M3Table" id="_jTableBD" index="1" name="_jTableBD" parent="JPanel Instance 4" window="PROGRES FAMILLE" />
+  <component class="fr.cnamts.m3.socle.ihm.impl.M3Table" id="_tabRCT" index="1" name="_tabRCT" parent="JPanel Instance 4" window="PROGRES FAMILLE 3" />
+  <component class="fr.cnamts.m3.socle.ihm.impl.M3Table" id="_tableUGE" index="0" name="_tableUGE" parent="JViewport Instance" window="PROGRES - Connexion à un Centre 5" />
+  <component class="fr.cnamts.m3.socle.ihm.impl.M3TextField" id="_txtDatDeb" index="3" name="_txtDatDeb" parent="JPanel Instance 5" window="PROGRES FAMILLE 3" />
+  <component class="fr.cnamts.m3.socle.ihm.impl.M3TextField" id="_txtMatricule" index="6" name="_txtMatricule" parent="JPanel Instance 7" window="Identification" />
+  <component class="javax.swing.SwingUtilities$SharedOwnerFrame" id="shared frame" root="true" title="" />
+  <component class="javax.swing.SwingUtilities$SharedOwnerFrame" id="shared frame 2" root="true" title="" />
+  <component class="javax.swing.SwingUtilities$SharedOwnerFrame" id="shared frame 3" root="true" title="" />
+  <component class="javax.swing.SwingUtilities$SharedOwnerFrame" id="shared frame 4" root="true" title="" />
+  <component class="javax.swing.SwingUtilities$SharedOwnerFrame" id="shared frame 5" root="true" title="" />
+  <component class="javax.swing.SwingUtilities$SharedOwnerFrame" id="shared frame 6" root="true" title="" />
+  <component class="javax.swing.SwingUtilities$SharedOwnerFrame" id="shared frame 7" root="true" title="" />
+  <launch args="[]" class="fr.cnamts.m3.ca.M3Main" classpath="C:\M3\Sources\m3\target\m3-1.0-SNAPSHOT.jar;C:\M3\Sources\socle-ihm\target\socle-ihm-1.0-SNAPSHOT.jar;C:\M3\Sources\data-services\target\data-services-1.0-SNAPSHOT.jar;C:\M3\Sources\F012-PriseEnCharge\target\F012-PriseEnCharge-0.1-SNAPSHOT.jar;C:\M3\Sources\F015-RecoursContreTiers\target\F015-RecoursContreTiers-0.1-SNAPSHOT.jar;C:\M3\Sources\F031-Correspondance\target\F031-gestionCorrespondance-0.1-SNAPSHOT.jar;C:\M3\Sources\preventionBuccoDentaire\target\preventionBuccoDentaire-0.1-SNAPSHOT.jar;C:\M3\Sources\socle-metier\target\socle-metier-1.0-SNAPSHOT.jar;C:\M3\Sources\socle-util\target\socle-util-1.0-SNAPSHOT.jar;C:\M3\Sources\tux\target\tux-1.0-SNAPSHOT.jar;C:\M3\.m2\repository\hivemind\hivemind\1.1\hivemind-1.1.jar;C:\M3\.m2\repository\log4j\log4j\1.2.8\log4j-1.2.8.jar;C:\M3\.m2\repository\commons-logging\commons-logging\1.0.4\commons-logging-1.0.4.jar;C:\M3\.m2\repository\oro\oro\2.0.8\oro-2.0.8.jar;C:\M3\.m2\repository\commons-beanutils\commons-beanutils\1.6.1\commons-beanutils-1.6.1.jar;C:\M3\.m2\repository\commons-collections\commons-collections\2.0\commons-collections-2.0.jar;C:\M3\.m2\repository\commons-io\commons-io\1.0\commons-io-1.0.jar;C:\M3\.m2\repository\jboss\javassist\3.0\javassist-3.0.jar;C:\M3\.m2\repository\jdom\jdom\1.0\jdom-1.0.jar;C:\M3\.m2\repository\fr\cnamts\archi-rfe\20051103\archi-rfe-20051103.jar;C:\M3\.m2\repository\fr\cnamts\m3\jtpxa\20060206\jtpxa-20060206.jar;C:\M3\.m2\repository\fr\cnamts\m3\jsso\20051123\jsso-20051123.jar;C:\M3\.m2\repository\j2ee.jar" method="main" />
+  <sequence>
+    <action args="7000" method="actionDelay" />
+    <action args="_tableUGE,&quot;2222&quot;" class="javax.swing.JTable" method="actionSelectCell" />
+    <action args="_btValider" class="javax.swing.AbstractButton" method="actionClick" />
+  </sequence>
+  <sequence>
+    <action args="Mise à jour - PE" method="actionSelectMenuItem" />
+    <wait args="Identification" class="abbot.tester.ComponentTester" method="assertComponentShowing" />
+    <action args="Identification,(137%2c131)" class="fr.cnamts.m3.ca.ihm.habilitation.HabilitationMatriculeIhm" method="actionClick" />
+    <action args="1111111111111" method="actionKeyString" />
+    <action args="20" method="actionKeyString" />
+    <action args="VK_F2" method="actionKeyStroke" />
+  </sequence>
+  <sequence>
+    <action args="_jMenuItemPPD" method="actionSelectMenuItem" />
+    <wait args="PROGRES" class="abbot.tester.ComponentTester" method="assertComponentShowing" />
+    <action args="Oui" class="javax.swing.AbstractButton" method="actionClick" />
+    <wait args="PROGRES" class="abbot.tester.ComponentTester" invert="true" method="assertComponentShowing" />
+    <wait args="Prévention Bucco-Dentaire" class="abbot.tester.ComponentTester" invert="true" method="assertComponentShowing" />
+    <action args="Prévention Bucco-Dentaire,586,376" class="javax.swing.JInternalFrame" method="actionResize" />
+    <action args="Prévention Bucco-Dentaire,586,376" class="javax.swing.JInternalFrame" method="actionResize" />
+    <action args="Prévention Bucco-Dentaire,20,20" class="javax.swing.JInternalFrame" method="actionMove" />
+    <action args="Prévention Bucco-Dentaire,586,376" class="javax.swing.JInternalFrame" method="actionResize" />
+    <wait args="Prévention Bucco-Dentaire" class="abbot.tester.ComponentTester" method="assertComponentShowing" />
+  </sequence>
+  <sequence>
+    <action args="_jTableBD,&quot;09/01/2002&quot;,BUTTON1_MASK,2" class="javax.swing.JTable" method="actionClick" />
+    <action args="_btInitialiser" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="_btAbandonner" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="Fermer  F4 4" method="actionSelectMenuItem" />
+    <action args="JPanel Instance 8,(25%2c12)" class="javax.swing.JPanel" method="actionDrag" />
+    <event component="JPanel Instance 8" kind="MOUSE_RELEASED" type="MouseEvent" x="25" y="12" />
+    <event component="Contexte 4" kind="MOUSE_RELEASED" type="MouseEvent" x="25" y="12" />
+    <action args="Fermer  F4 4" method="actionSelectMenuItem" />
+    <action args="Quitter    Ctrl+F4" method="actionSelectMenuItem" />
+  </sequence>
+  <terminate />
+</AWTTestScript>
+

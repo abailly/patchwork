@@ -1,0 +1,5 @@
+#title Download
+#author Arnaud Bailly
+
+This page has been moved to [[http://code.google.com/p/patchwork-cover/downloads/list]]
+

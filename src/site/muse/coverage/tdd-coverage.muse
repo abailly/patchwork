@@ -1,0 +1,199 @@
+#title Test Driven-Development and Code Coverage
+#author Arnaud Bailly
+
+*Test Driven Development* or TDD for short is one of the core practices
+of *eXtreme Programming* (see [[../services/agile/xp-explained][Notes on 'XP Explained']]). TDD can be
+defined using the mantra **Test, Code, Refactor**: 
+ 1. *Write one test* that expresses what the code should do and through
+    which structure it should do that,
+ 2. *Run for failure* ensures that the recently added test fails,
+ 3. *Code minimal solution* that makes the written test pass (while not
+    breaking existing tests),
+ 4. *Run for success* ensures that test and code fit one another,
+ 5. *Refactor* tests and code so that redundant code, constants,
+    initialization and structures should be factored into more general
+    and/or more simpler solution,
+ 6. *Run to success* ensures that refactoring does not break code and
+    test base.
+
+One question that may be asked is:
+   *How does one use code coverage information in a TDD process ?*
+
+a corollary question being: 
+   *Is code coverage useful when one does TDD ?*
+
+Indeed, following TDD normally yield 100% coverage as the code is
+written to fit as perfectly and minimally as possible the given
+test. Of course, it all depends on what one means with *coverage*, as
+there exists a whole zoo of test coverage criteria. In our setting, 
+coverage means *structural coverage*: the amount of code that is
+exercized by the test suite, but that still leaves a fair amount of
+measurements to chose from. To stay close to common practices in the
+field, we will use standard *line* and *branch* coverage, measures which
+are given by most commonly used coverage tools. 
+
+We start by using the classical and somewhat worn example of the 
+**triangles**, whose specifications are thus given:
+ - **input**: three numbers that are supposed to denote the length of the
+   sides of a (non degenerate) triangle,
+ - **output**: the type of the triangle, one of equilateral, isoceles, rectangle,
+   scalene or error.
+
+Following [[../services/testing/ootest.muse][R.Binder]], we adapt this example to an object-oriented
+setting: 
+ - the inputs are the three arguments to the constructor of a =Triangle= class,
+ - the outputs are the (boolean) result of instance methods from the
+   =Triangle= class (ie. an instance of =Triangle= is rectangle if the
+   method =isRectangle()= returns =true=),
+ - an exception is thrown upon construction of the object in case of
+   error.
+
+* First rounds
+
+Let's start doing TDD with our first simple test case. Just to start
+somewhere, we begin by testing the equilateral nature of triangles. 
+
+<source name="oqube/tdd/Triangle1Test.java">
+package oqube.tdd;
+import junit.framework.TestCase;
+
+public class Triangle1Test extends TestCase { 
+
+  public void testIsEquilateral() { 
+      Triangle1 t = new Triangle1(3,3,3);
+      assertTrue(t.isEquilateral());
+  }
+}
+</source>
+
+A minimal implementation satisfying this test is then:
+
+<source name="oqube/tdd/Triangle1.java">
+package oqube.tdd;
+public class Triangle1 { 
+  public Triangle1(int a, int b, int c){}
+  public boolean isEquilateral(){ return true;}  
+}
+</source>
+
+When run, the test obviously passes ! We can then enrich our test set
+with a *negative* test, ensuring that our code base can discriminate
+equilateral triangles:
+
+<source name="oqube/tdd/Triangle2Test.java">
+package oqube.tdd;
+import junit.framework.TestCase;
+
+public class Triangle2Test extends TestCase { 
+
+  public void testIsEquilateral() { 
+      Triangle2 t = new Triangle2(3,3,3);
+      assertTrue(t.isEquilateral());
+  }
+
+  public void testIsNotEquilateral() { 
+      Triangle2 t = new Triangle2(3,3,2);
+      assertTrue(!t.isEquilateral());
+  }
+}
+</source>
+
+Running these two tests without touching code yields one pass and one
+fail. We then make a giant conceptual leap in our new implementation by:
+ - storing the side of the triangle in attributes,
+ - computing the equilateral status of our triangle by asserting that
+   the three sides are indeed equal.
+
+<source name="oqube/tdd/Triangle2.java">
+package oqube.tdd;
+public class Triangle2 { 
+  private int a,b,c;
+  public Triangle2(int a, int b, int c){
+     this.a = a;
+     this.b = b;
+     this.c = c;
+  }
+  public boolean isEquilateral(){ 
+    return a == c && b == b;
+  }  
+}
+</source>
+
+The new test suite then passes both tests and we are happy and
+confident that our code is indeed correct as tests tell us so.
+
+* Enters coverage
+
+The alert reader may have noticed quite easily that we made an error in the
+implementation of the equilateral method: <code>b==b</code> should
+read <code>a == b</code>. Yet our test suite passes and in a less
+contrived setting an unwary developer may thus let slip in some
+subtle errors that may co unnoticed until production release. 
+
+** Basic Coverage feedback
+
+We need more feedback from the testing process such that errors like
+these should no be left lurking, and this feedback is given by code
+coverage information. Here is what [[http://cobertura.sourceforge.net][Cobertura]] tells us about the
+coverage of out tests suite:
+
+[[/images/cobertura-triangle.png][Couverture]]
+
+According to Cobertura, we have achieved 100% coveerage ! Yet we did
+not exhibited any erroneous behavior, although we now know the code is
+incorrect. One can then, somewhat hastily, that coverage measurement
+is useless as far as bug hunting is considered. 
+
+** All-edges coverage
+
+Yet, if we get the measures from [[/projects/patchwork/index][Patchwork]], we have the following
+figures:
+
+[[/images/coverage-triangle2.png][Couverture des sources Patchwork]]
+
+[[/images/cover-triangles.png][Couverture Patchwork]]
+
+The last picture shows that we *did not* achieved 100% coverage of the
+=isEquilateral()= method, a fact that is easily explained: We are
+measuring the *all-edges* coverage for class Triangle2, and as shown
+on [[./control-flow.muse][Control flow]] page, the control flow graph for the =isEquilateral=
+method contains 8 edges of which only 7 are covered. We did not
+covered edge between blocks 2 and 4, which is covered by the following
+test case which checks discrepancies between =a=
+and =b=:
+
+<source name="oqube/tdd/Triangle2MissingTest.java">
+package oqube.tdd;
+import junit.framework.TestCase;
+
+public class Triangle2MissingTest extends TestCase { 
+
+  public void testNotIsEquilateralAB() { 
+      Triangle2 t = new Triangle2(3,2,3);
+      assertTrue(!t.isEquilateral());
+  }
+}
+</source>
+
+This test, according to our implementation, will fail, revealing the
+hidden bug lurking in the simple =isEquilateral= method. 
+
+** Refactoring TDD
+
+This small example leads us to the following conclusions:
+ 1. Coverage report's usefulness depends on what is really measured by
+    the coverage tool. In most interesting cases, *lines* and *branches*
+    coverage are not powerful enough to be useful as defect removal tools,
+ 2. As tests are useful when they *fail* (ie. as a proof of completion,
+    sample specification, programming goal in TDD), as coverage is
+    useful when *it is not* 100%,
+ 3. Adding coverage report in the loop gives us more tests to write
+    and increase our confidence in the tested code.
+
+So we may refactor the base TDD loop as:
+ 1. write test
+ 2. make test fail
+ 3. write code that works
+ 4. **measure coverage**
+ 5. write **more tests** to reach coverage objective
+ 6. refactor

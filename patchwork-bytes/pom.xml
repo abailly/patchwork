@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+
+ <parent>
+  <groupId>oqube.patchwork</groupId>
+  <artifactId>patchwork</artifactId>
+  <version>4-SNAPSHOT</version>
+ </parent>
+
+ <groupId>oqube.patchwork</groupId>
+ <artifactId>patchwork-bytes</artifactId>
+ <packaging>jar</packaging>
+ <version>4-SNAPSHOT</version>
+ <name>Bytecode Engineering Toolkit</name>
+
+ <description>
+  a low-level library for manipulating classfiles and bytecode of Java classes. 
+ </description>
+
+ <inceptionYear>2002</inceptionYear>
+
+ <dependencies>
+  
+  <dependency>
+   <groupId>junit</groupId>
+   <artifactId>junit</artifactId>
+   <version>4.7</version>
+   <scope>test</scope>
+  </dependency>
+  
+  <dependency>
+    <groupId>com.google.guava</groupId>
+    <artifactId>guava</artifactId>
+    <version>10.0.1</version>
+  </dependency>
+  
+ </dependencies> 
+
+ <reporting>
+  <plugins>
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-project-info-reports-plugin</artifactId>
+    <reportSets>
+     <reportSet>
+      <reports>
+      </reports>
+     </reportSet>
+    </reportSets>
+   </plugin>
+  </plugins>
+ </reporting>
+</project>

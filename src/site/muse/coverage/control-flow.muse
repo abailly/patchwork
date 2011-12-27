@@ -1,0 +1,96 @@
+#title Patchwork technical details
+#author Arnaud Bailly
+
+* Introduction 
+
+Patchwork aims to be a general purpose framework for computing
+arbitrary *coverage information* from test execution on a code base. In
+its present incarnation, it offers only support for measuring
+*control-flow based* coverage, but this is the most important class of
+coverage criteria used in software engineering. 
+
+The coverage information in Patchwork is drawn from *bytecode
+instrumentation* prior to actual loading of covered code into the
+JVM. Various techniques are used to limit both space and time overhead
+incurred to the loaded code during tests executions. Execution of the
+tests triggers execution of *instrumentation points* which in turns
+calls certain methods to record the fact that this point has been
+executed. After tests have been run, a report is constructed, and if
+possible a *mapping* is constructed from bytecode information to actual source
+code so that executed lines can be displayed, which is something
+usually easier to understand for humans than bytecode sequences.
+
+From the raw coverage information, the code structure and *coverage
+criteria* defined by users, the coverage report displays whether
+coverage objectives have been met or not. 
+
+* Control-flow graph
+
+The *control-flow graph* of a method (or function) is a representation of
+the possible path of executions this method can take, from method
+invocation to method termination. It is constructed from the method's
+code (in source or bytecode form), either implicitly or explicitly. In
+patchwork, the control flow graph may be built explicitly, with *basic
+blocks* as nodes and possible jumps or transitions as edges. 
+
+#block 
+** Basic block
+
+A **basic block** is also known as a *linear instruction sequence without
+jumps*. It is a sequence of code with the following characteristics: 
+ 1. no instruction contained in this sequence of code except the first
+    one is the target of a jump instruction,
+ 2. no instruction contained in this sequence except the last one is
+    a jump instruction.
+
+When a program enters a basic block, it is guaranteed to execute all
+the instructions in this block, which means that we only need to
+record *entry* in the block to get coverage information about the code
+sequence executed. Note that this strategy does not work if a
+=RuntimeException= or an =Error= occurs during the execution of the code,
+but usually these exceptions bubble up to toplevel and make a test
+case fails. It would not be hard however to record *exit* of block
+instead of entry which together with entry would give more accurate
+information about the code executed really, at the expense of some
+space overhead. 
+
+#controlgraph
+** Control graph
+
+The *control graph* of a bytecode sequence is constructed by linking its
+basic blocks using the jump instructions which terminate each
+block. Jump instructions may be:
+ - =return= instructions which link the block to the special **End** block, 
+ - unconditional jumps (=goto=) which are transformed into single links,
+ - conditional jumps (=ifxxxx=) which are transformed into dual links:
+   One link to target of instruction and one to following block,
+ - switch instructions which create multiple links: One for each
+   possible switch plus one for default target,
+ - exception =catch= blocks which are the target of each block within
+   the corresponding =try= and which are linked to following block (or
+   end block if catch sequence ends with a return).
+
+Formally, a control graph for a method is a directed graph `C=(V,E)`
+where `V` is a set of vertices made from basic blocks constructed for the method and
+`E\in (VxV)`  is the set of edges from blocks to blocks. Special block
+**Start** - resp. **End** - is such that there is path from it to  - resp. to
+it from - each other block and there is no edge into it - resp. no
+edge out of it. Conditional edges are labelled with the positive and
+negative instruction entailing the creation of the edge.
+
+** Example
+
+Here is a sample method's source code for computing (with an error !) whether a
+triangle's sides define an equilateral triangle,
+
+<src lang="java">
+  public boolean isEquilateral(){ 
+    return a == c && b == b;
+  }  
+</src>
+
+and the corresponding control flow graph extracted by Patchwork:
+
+[[../images/equilateral.png][Control-flow graph]]
+
+

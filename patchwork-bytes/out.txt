@@ -1,0 +1,57 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Bytecode Engineering Toolkit
+[INFO]    task-segment: [clean, install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [clean:clean {execution: default-clean}]
+[INFO] Deleting directory /home/nono/projets/patchwork/patchwork-bytes/target
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nono/projets/patchwork/patchwork-bytes/src/main/resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Compiling 74 source files to /home/nono/projets/patchwork/patchwork-bytes/target/classes
+[INFO] [resources:testResources {execution: default-testResources}]
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 2 resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] Compiling 9 source files to /home/nono/projets/patchwork/patchwork-bytes/target/test-classes
+[INFO] [surefire:test {execution: default-test}]
+[INFO] Surefire report directory: /home/nono/projets/patchwork/patchwork-bytes/target/surefire-reports
+
+-------------------------------------------------------
+ T E S T S
+-------------------------------------------------------
+Running oqube.bytes.AttributeTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.096 sec
+Running oqube.bytes.utils.TemporaryFSTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.011 sec
+Running oqube.bytes.loading.FilesFactoryTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.015 sec
+Running oqube.bytes.loading.ClassFileCompositeFactoryTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 sec
+Running oqube.bytes.utils.FilesetTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.025 sec
+Running oqube.bytes.DumpTest
+Tests run: 0, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.003 sec
+Running oqube.bytes.loading.CachedClassFileFactoryTest
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 sec
+Running oqube.bytes.IOTest
+Tests run: 2, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.012 sec
+Running oqube.bytes.loading.FilesetFactoryTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.008 sec
+
+Results :
+
+Tests run: 19, Failures: 0, Errors: 0, Skipped: 0
+
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] Building jar: /home/nono/projets/patchwork/patchwork-bytes/target/patchwork-bytes-4-SNAPSHOT.jar
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing /home/nono/projets/patchwork/patchwork-bytes/target/patchwork-bytes-4-SNAPSHOT.jar to /home/nono/.m2/repository/oqube/patchwork/patchwork-bytes/4-SNAPSHOT/patchwork-bytes-4-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 6 seconds
+[INFO] Finished at: Fri Nov 27 11:33:18 CET 2009
+[INFO] Final Memory: 17M/31M
+[INFO] ------------------------------------------------------------------------

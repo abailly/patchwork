@@ -1,0 +1,12 @@
+#title Covering Scala code
+#author Arnaud Bailly
+
+
+* Scala
+
+[[http://scala.epfl.ch][Scala]] is a wonderful new language with functional and object oriented
+features, whose compiler targets JVM and CLR bytecodes. As it is
+bytecode based, it is [[http://www.oqube.com/projects/cellular/patchwork.html][perfectly possible]] to generate a Patchwork
+report for Scala code, even with source lines coverage. Unfortunately,
+I do not have yet a source code highlighter tailored for Scala so
+currently Scala code is highlighted as Java code.

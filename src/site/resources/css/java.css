@@ -1,0 +1,27 @@
+.source {
+background-color: #eef;
+font-family: monospace;
+}
+
+.source a[href] {
+background-color: white;
+color: ligthblue;
+font-style: italic;
+text-decoration: none;
+}
+
+.java_type {
+color: blue;
+}
+
+.java_javadoc_comment {
+color: red;
+}
+
+.java_comment{
+color: grey;
+}
+
+.java_keyword {
+font-weight: bold;
+}

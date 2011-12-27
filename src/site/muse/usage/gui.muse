@@ -1,0 +1,27 @@
+#title Dependency Graph Viewer
+#author Arnaud Bailly
+
+* Introduction
+
+As of version 4, Patchwork comes with a Swing program that allows
+visualization of various graphs constructed from analyzed class files: 
+ 1. **Dependency graph**: Shows classes and packages as nodes and various
+    kind of dependencies between them: inheritance, implementation,
+    usage.
+ 2. **Call graph**: Shows methods and interactions between them: calling,
+    overriding, implementing. The control graph is abstracted to keep
+    only call instructions so that branches stay visible.
+ 3. **Control graph**: Shows the detailed control graph for one method. 
+
+** Usage
+
+ 1. from the binary distribution root directory, run =bin/graph.sh=
+    (linux) or =bin\graph.bat= (windows). 
+
+* Dependency graph 
+
+* Call graph
+
+
+* Control graph
+

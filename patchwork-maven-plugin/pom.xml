@@ -1,0 +1,121 @@
+<?xml version="1.0"?><project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>patchwork</artifactId>
+    <groupId>oqube.patchwork</groupId>
+    <version>4-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>oqube.patchwork</groupId>
+  <artifactId>patchwork-maven-plugin</artifactId>
+  <packaging>maven-plugin</packaging>
+  <name>Patchwork Run and Report Mojo</name>
+  <version>4-SNAPSHOT</version>
+  <dependencies>
+  
+  <dependency>
+   <groupId>org.apache.maven</groupId>
+   <artifactId>maven-embedder</artifactId>
+   <version>3.0</version>
+   <scope>test</scope>
+  </dependency>
+  
+  <dependency>
+   <groupId>org.apache.maven</groupId>
+   <artifactId>maven-core</artifactId>
+   <version>2.2.1</version>
+   <scope>test</scope>
+  </dependency>
+  
+    <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-plugin-api</artifactId>
+      <version>2.2.1</version>
+    </dependency>
+    <dependency>
+      <groupId>oqube.patchwork</groupId>
+      <artifactId>patchwork-control</artifactId>
+      <version>4-SNAPSHOT</version>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>3.8.1</version>
+      <scope>test</scope>
+    </dependency>
+        <dependency>
+      <groupId>org.apache.maven</groupId>
+      <artifactId>maven-artifact</artifactId>
+      <version>2.2.1</version>
+    </dependency>
+  <dependency>
+   <groupId>org.apache.maven.reporting</groupId>
+   <artifactId>maven-reporting-api</artifactId>
+   <version>2.2.1</version>
+  </dependency>
+  <dependency>
+   <groupId>org.apache.maven.reporting</groupId>
+   <artifactId>maven-reporting-impl</artifactId>
+   <version>2.1</version>
+  </dependency>
+  
+  
+  </dependencies>
+
+ <build>
+  <plugins>
+	<!-- waiting for class path resolution 
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-plugin-test-plugin</artifactId>
+        <version>1.0-SNAPSHOT</version>
+        <executions>
+          <execution>
+            <id>pre-it-test</id>
+            <phase>pre-integration-test</phase>
+            <goals>
+              <goal>stage</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>post-it-test</id>
+            <phase>post-integration-test</phase>
+            <goals>
+              <goal>unstage</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+ -->
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <configuration>
+     <excludes>
+      <exclude>**/PatchworkMavenTest*</exclude> 
+      <exclude>**/Triangle*</exclude> 
+       </excludes>
+    </configuration>
+    <!--
+    <executions>
+     <execution>
+      <id>it-test</id>
+      <phase>integration-test</phase>
+      <goals>
+       <goal>test</goal>
+      </goals>
+      <configuration>
+       <includes>
+	<include>**/*TestIt.class</include>
+       </includes>
+       <excludes>
+	<exclude>**/PatchworkMavenTest*</exclude> 
+       </excludes>
+      </configuration>
+     </execution>
+    </executions>
+ -->
+   </plugin>
+</plugins>
+</build>
+</project>

@@ -1,0 +1,87 @@
+#title Patchwork
+#author Arnaud Bailly 
+
+* Introduction
+
+** What is it ?
+
+Patchwork aims to be a general purpose *coverage analysis tool* for Java
+programs in bytecode form. It works as follows:
+ 1. A given set of =.class= files is *instrumented* to generate coverage
+    information at runtime by calls to a **Coverage** class tailored for
+    this project and set of files. The information recorded is the
+    entry of each [[index#block][basic block]] of instruction,
+ 2. A given set of *test files* are run using **TestRunner**, hopefully exercising bytecode
+    from the instrumented classes. At present time, only JUnit test
+    cases are launched,
+ 3. The coverage information is then analyzed by one or more **Reporter**
+    classes that uses the raw (binary) information recorded by
+    Coverage classs.
+
+** Why ?
+
+There already exists coverage tools for Java bytecodes, some of which
+are: 
+ - http://cobertura.sourceforge.net/ : open-source tool forked from
+   JCoverage community version,
+ - http://www.jcoverage.com/ : commercial tool with a community
+   version that has several limitations,
+ - http://www.cenqua.com/clover/ : commercial tool,
+ - http://quilt.sourceforge.net/ : seems to be an orphan project,
+ - http://emma.sourceforge.net/.
+
+These tools are good but they do not seem to provide the raw information I
+need, which is basic block execution *sequences*. In other words, these
+tools can only give you *node coverage* measures, but not *edge coverage*
+measures. The goal of *Patchwork* is to record the information needed to
+reconstruct any coverage criterion measure based on the control
+graph which includes numerous control-flow criteria *and* data-flow
+criteria. 
+
+
+#block 
+** Basic block
+
+A **basic block** is also known as a *linear instruction sequence without
+jumps*. It is a sequence of code with the following characteristics: 
+ 1. no instruction contained in this sequence of code except the first
+   one is the target of a jump instruction,
+ 2. no instruction contained in this sequence except the last one is
+   a jump instruction.
+
+When a program enters a basic block, it is guaranteed to execute all
+the instructions in this block, which means that we only need to
+record *entry* in the block to get coverage information about the code
+sequence executed. Note that this strategy does not work if a
+=RuntimeException= or an =Error= occurs during the execution of the code,
+but usually these exceptions bubble up to toplevel and make a test
+case fails. It would not be hard however to record *exit* of block
+instead of entry which together with entry would give more accurate
+information about the code executed really.
+
+There are always two special blocks for each method: **Start** block and
+**End** block.
+
+#controlgraph
+** Control graph
+
+The *control graph* of a bytecode sequence is constructed by linking its
+basic blocks using the jump instructions which terminate each
+block. Jump instructions may be:
+ - =return= instructions which link the block to the special **End** block, 
+ - unconditional jumps (=goto=) which are transformed into single links,
+ - conditional jumps (=ifxxxx=) which are transformed into dual links:
+   One link to target of instruction and one to following block,
+ - switch instructions which create multiple links: One for each
+   possible switch plus one for default target,
+ - exception =catch= blocks which are the target of each block within
+   the corresponding =try= and which are linked to following block (or
+   end block if catch sequence ends with a return).
+
+Formally, a control graph for a method is a directed graph =C (V,E)= where =V= is a set
+of vertices made from basic blocks constructed for the method and =E\in
+(VxV)=  is the set of edges from blocks to blocks. Special block
+**Start** - resp. **End** - is such that there is path from it to  - resp. to
+it from - each other block and there is no edge into it - resp. no
+edge out of it. Conditional edges are labelled with the positive and
+negative instruction entailing the creation of the edge.

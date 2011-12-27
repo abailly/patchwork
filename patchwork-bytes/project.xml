@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<project>
+ <pomVersion>3</pomVersion>
+ <id>BET</id>
+ <groupId>nono</groupId>
+ <name>BET</name>
+ <currentVersion>1.0</currentVersion>
+ <organization>
+  <name>LIFL</name>
+  <url>http://www.lifl.fr</url>
+  <logo>http://www.lifl.fr/LOGOS/fac.gif</logo>
+ </organization>
+ <siteAddress>
+ 	faxe.lifl.fr
+ 	</siteAddress>
+ <siteDirectory>
+ /home/stc/bailly/public_html/secure/xblog/soft/BET
+ </siteDirectory>
+ <repository>
+  <connection>
+   scm:cvs:pserver:bailly@localhost:/var/lib/cvs:BET
+  </connection>
+ </repository>
+ <package>fr.norsys.klass</package>
+ <description>
+	BET - Bytecode Engineering Toolkit - est un ensemble d'utilitaires de manipulation 
+	de bytecode Java. Il permet de lire/écrire des fichiers .class à partir d'une
+	structure objet représentant le format d'un tel. Le sous-paquetage graph offre
+	une visualisation sous forme de graphe de contrôle ou de données du corps
+	d'une méthode. Le sous-paquetage coverage est un embryon d'analyseur de couverture
+	basé sur JPDA.
+ </description>
+ <distributionDirectory/>
+ <versions/>
+ <mailingLists/>
+ <developers/>
+ <dependencies>
+  <dependency>
+   <groupId>innig</groupId>
+   <artifactId>innig-util</artifactId>
+	<url>http://innig.net/nnig-util/build/innig-util.jar</url>
+	<version>1.0</version>
+   <type>jar</type>
+   <properties/>
+  </dependency>
+  <dependency>
+   <groupId>jdk</groupId>
+   <artifactId>tools</artifactId>
+	<version>1.4.2</version>
+   <type>jar</type>
+   <properties/>
+  </dependency>
+  <dependency>
+   <groupId>nono</groupId>
+   <artifactId>openjgraph</artifactId>
+	<version>0.9.5</version>
+   <type>jar</type>
+   <properties/>
+  </dependency>
+  <dependency>
+   <groupId>nono</groupId>
+   <artifactId>parsing</artifactId>
+	<version>1.0</version>
+   <type>jar</type>
+   <properties/>
+  </dependency>
+ </dependencies>
+ <build>
+  <sourceDirectory>src</sourceDirectory>
+  <unitTestSourceDirectory>test</unitTestSourceDirectory>
+  <unitTest>
+  <includes>
+  <include>**/*Test*.java</include>
+ </includes>
+  <excludes>
+    <exclude>**/TestAll.java</exclude>
+ </excludes>
+ </unitTest>
+ </build>
+ <reports>
+  <report>maven-javadoc-plugin</report>
+  <report>maven-jxr-plugin</report>
+  <report>maven-jcoverage-plugin</report>
+  <report>maven-junit-report-plugin</report>
+ </reports>
+</project>

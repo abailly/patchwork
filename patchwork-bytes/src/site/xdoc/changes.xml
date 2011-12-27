@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<document>
+ <properties>
+  <title>Changes</title>
+  <author email="bailly AT lifl POINT fr">Arnaud BAILLY</author>
+ </properties>
+
+ <body>
+  <release version="0.2" date="2005/06/14">
+   <action dev="bailly" type="add">
+   Added abstract class ReadOnlySet and ReadOnlyMap for implementing
+mathematical sets and maps.
+</action>
+    </release>
+
+    <release version="0.1" date="unknown">
+    </release>
+
+  </body>
+</document>

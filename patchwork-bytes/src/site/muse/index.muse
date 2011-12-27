@@ -1,0 +1,105 @@
+#title Patchwork bytes
+#author Arnaud Bailly 
+
+* Introduction
+
+This Patchwork module is dedicated to the manipulation of Java class
+files. Its features are:
+ - read/write class files up to Java 5 language level,
+ - specialized class loader for constructing classes on the fly,
+ - an embryonic and somewhat untested event reporting mechanism, in
+   the line of SAX2 parsing. 
+
+* Usage
+
+Here is a sample code that illustrates using Patchwork-bytes for
+reading, constructing code and writing a class. As usual, this is
+quite ugly to behold:
+
+We first create an empty =ClassFile= object that representsa  single JVM
+class, and defines some of its characteristics: name, interfaces
+implemented, access flags, parent class:
+
+<src lang="java">
+    ClassFile cf = new ClassFile();
+    ClassFileInfo cfi = new ClassFileInfo(cf, className);
+    cfi.addInterface("oqube/patchwork/report/CoverageInfo");
+    cfi.setFlags((short) (Constants.ACC_FINAL | Constants.ACC_PUBLIC));
+    cfi.setParent("java/lang/Object");
+    cf.setClassFileInfo(cfi);
+</src>
+
+We then create a constructor for the class. A constructor has special
+name =<init>= and returns nothing (void), in this particular case, it
+just invokes superclass's constructor (which is mandatory in Java):
+<src lang="java">
+    /* constructor */
+    MethodFileInfo mfi = new MethodFileInfo(cf);
+    mfi.setName("<init>");
+    mfi.setType("()V");
+    mfi.setFlags((short) (Constants.ACC_PUBLIC));
+    cf.add(mfi);
+    CodeAttribute code = new CodeAttribute(cf);
+    code.setMaxlocals((short)1);
+    Sequence seq = new Sequence(cf);
+    short mr = MethodRefData.create(cf.getConstantPool(),"java/lang/Object","<init>","()V");
+    seq._aload_0()._invokespecial(mr,cf)._return();
+    /* done */
+    code.add(seq);
+    mfi.setCode(code);
+</src>
+
+We then create another method, =getClasses()= that returs an array of
+String objects representing a list of class names to be
+instrumented. String constants are stored in the **constant pool** of the
+class and referred to using some index. We build a **sequence** of code,
+an object that cares of computing maximum stack size and number of
+local variables to be stored as method's characteristics. We then **write**
+the class file to some stream, using the ClassFile =write()= method that
+transforms the structure of the object in bytecode:
+
+<src lang="java">
+    mfi = new MethodFileInfo(cf);
+    mfi.setName("getClasses");
+    mfi.setType("()[Ljava/lang/String;");
+    mfi.setFlags((short) (Constants.ACC_PUBLIC));
+    code = new CodeAttribute(cf);
+    code.setMaxlocals((short)1);
+    seq = new Sequence(cf);
+    List l = instrumented.getClasses();
+    /* create and initialize array of classes */
+    short str = ClassData.create(cf.getConstantPool(), "java/lang/String");
+    seq._sipush((short) l.size())._anewarray(str);
+    /* loop over classes definitions */
+    int k = 0;
+    for (Iterator i = l.iterator(); i.hasNext();) {
+      ClassFile icf = (ClassFile) i.next();
+      /* store class name in array */
+      String cn = icf.getClassFileInfo().getName();
+      short sr = StringData.create(cf.getConstantPool(), cn);
+      seq._dup()._sipush((short) k)._ldc_w(sr)._aastore();
+      k++;
+    }    
+    /* return */
+    seq._areturn();
+    /* done */
+    code.add(seq);
+    mfi.setCode(code);
+    cf.add(mfi);
+    /* write class file to some stream 8/
+    FileOutputStream fos = new FileOutputStream(classname + ".class");
+    cf.write(new DataOuputStream(fos));
+    fos.flush(); fos.close();
+</src>
+
+
+
+* Links 
+
+There are a lot of other libraries and tools for manipulating Java
+bytecode:
+
+ - [[http://jakarta.apache.org/bcel/][BCEL]]: The most well-known and used library from the Apache
+   Foundation,
+ - [[http://www.csg.is.titech.ac.jp/~chiba/javassist/][Javassist]]: Library for implementing AOP, used in JBoss,
+ - [[http://asm.objectweb.org/][ASM]]: small, fast and french (:-)).

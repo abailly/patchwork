@@ -1,0 +1,14 @@
+============================== ||||||
+          Patchwork            ||||
+============================== |||
+
+version: 4-SNAPSHOT
+
+Patchwork is a set of tools to allow computation of code coverage
+metrics from test execution. This file is part of the binary
+distribution of Patchwork which is made of:
+ - bin/ : directory for executable scripts (Windows and Linux). Note
+   that scripts for Windows are untested
+ - lib/ : necessary jars for execution of Patchwork tools.
+ - patchwork-main-4-SNAPSHOT.jar : launcher Jar
+

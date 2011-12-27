@@ -1,0 +1,7 @@
+#title Patchwork Control
+#author Arnaud Bailly 
+
+* Introduction
+
+This module deals with the construction of coverage measures from
+**control flow graphs** extracted from bytecode. 

@@ -1,0 +1,3 @@
+D:/projets/patchwork/patchwork-native/CMakeFiles/ALL_BUILD.dir
+D:/projets/patchwork/patchwork-native/CMakeFiles/PatchworkAgent.dir
+D:/projets/patchwork/patchwork-native/CMakeFiles/ZERO_CHECK.dir

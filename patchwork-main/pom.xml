@@ -1,0 +1,110 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+
+ <parent>
+  <groupId>oqube.patchwork</groupId>
+  <artifactId>patchwork</artifactId>
+  <version>4-SNAPSHOT</version>
+ </parent>
+
+ <groupId>oqube.patchwork</groupId>
+ <artifactId>patchwork-main</artifactId>
+ <packaging>jar</packaging>
+ <version>4-SNAPSHOT</version>
+ <name>Patchwork Application</name>
+
+ <description>
+Packager and launcher for patchwork CLI
+ </description>
+
+
+ <dependencies>
+  
+  <dependency>  
+   <groupId>oqube.patchwork</groupId>
+   <artifactId>patchwork-bytes</artifactId>
+   <version>4-SNAPSHOT</version>
+  </dependency>  
+
+  <dependency>  
+   <groupId>oqube.patchwork</groupId>
+   <artifactId>patchwork-control</artifactId>
+   <version>4-SNAPSHOT</version>
+  </dependency>  
+
+  <dependency>  
+   <groupId>oqube.patchwork</groupId>
+   <artifactId>patchwork-ui</artifactId>
+   <version>4-SNAPSHOT</version>
+  </dependency>  
+
+ </dependencies>
+
+ <build>
+  <plugins>
+   <plugin>
+    <artifactId>maven-jar-plugin</artifactId>
+    <configuration>
+     <archive>
+      <manifest>
+       <mainClass>oqube.patchwork.Launch</mainClass>
+       <addClasspath>true</addClasspath>
+       <addExtensions>true</addExtensions>
+       <classpathPrefix>lib/</classpathPrefix>
+      </manifest>
+     </archive>
+    </configuration>
+   </plugin>
+   
+   <plugin>
+    <artifactId>maven-assembly-plugin</artifactId>
+    <executions>
+     <execution>
+      <id>attached</id>
+      <phase>install</phase>
+      <goals>
+       <goal>attached</goal>
+      </goals>
+      <configuration>
+       <descriptors>
+	<descriptor>src/main/assembly/bin.xml</descriptor>
+       </descriptors>
+       <finalName>patchwork-${version}</finalName>
+      </configuration>
+     </execution>
+    </executions>
+   </plugin>
+   
+   <plugin>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <configuration>
+     <forkMode>always</forkMode>
+    </configuration>
+   </plugin>
+   
+  </plugins>
+</build>
+
+ <reporting>
+  <plugins>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-project-info-reports-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-javadoc-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>jxr-maven-plugin</artifactId>
+   </plugin>
+
+  </plugins>
+ </reporting>
+ 
+ 
+</project>

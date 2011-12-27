@@ -1,0 +1,17 @@
+target/
+*~
+\#*
+.project
+.settings
+.eclipse
+.classpath
+*.o
+*.hi
+*.a
+dist/
+*.exe
+*.html
+*.tix
+.hpc
+target/
+.svn/

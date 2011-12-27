@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+ <groupId>oqube.patchwork</groupId>
+ <artifactId>patchwork</artifactId>
+ <packaging>pom</packaging>
+ <version>4-SNAPSHOT</version>
+ <name>Generalized Coverage Tool</name>
+ <url>http://www.oqube.com/projects/patchwork/</url>
+ <description>
+  A library for analyzing various testing coverage measurements of Java bytecode
+ </description>
+
+ <inceptionYear>2005</inceptionYear>
+
+ <licenses>
+  <license>
+   <name>GNU LGPL 2.1</name>
+   <url>http://www.gnu.org/licenses/lgpl.txt</url>
+   <distribution>repo</distribution>
+  </license>
+ </licenses> 
+
+ <repositories>
+  <repository>
+   <id>oqube.com</id>
+   <name>OQube plugin repository</name>
+   <url>http://www.oqube.com/maven2</url>
+   <layout>default</layout>
+   <snapshots>
+    <enabled>true</enabled>
+   </snapshots>
+   <releases>
+    <enabled>true</enabled>
+   </releases>
+  </repository>
+ </repositories>
+
+
+ <scm>
+    <connection>scm:svn:https://patchwork-cover.googlecode.com/svn/trunk</connection>
+    <developerConnection>scm:svn:https://patchwork-cover.googlecode.com/svn/trunk</developerConnection>
+    <tag>HEAD</tag>
+  </scm>
+
+ <issueManagement>
+  <system>google</system>
+  <url>http://code.google.com/p/patchwork-cover/issues/list</url>
+ </issueManagement>
+
+ <mailingLists>
+    <mailingList>
+      <name>User and Dev List</name>
+      <subscribe>patchwork-users@googlegroups.com</subscribe>
+      <unsubscribe>patchwork-users@googlegroups.com</unsubscribe>
+      <post>patchwork-users@googlegroups.com</post>
+      <archive>http://groups.google.com/group/patchwork-users</archive>
+    </mailingList>
+  </mailingLists>  
+
+ <distributionManagement>
+  
+  <site>
+   <id>oqube.com</id>
+   <url>
+    scp://www.oqube.com/var/www/projects/patchwork
+   </url>
+  </site>
+
+  <repository>
+   <id>oqube.com</id>
+   <name>OQube public repository</name>
+   <url>
+    scp://www.oqube.com/var/www/maven2
+   </url>
+  </repository>
+  
+ </distributionManagement>
+
+ <developers>
+ 
+  <developer>
+   <name>Arnaud Bailly </name>
+   <id>bailly</id>
+    <email>bailly AT lifl POINT fr</email>
+    <organization> LIFL/Norsys</organization>
+    <roles>
+     <role>Developper</role>
+    </roles>
+  </developer>
+ </developers>
+
+ <modules>
+  <module>patchwork-bytes</module>
+  <module>patchwork-control</module>
+  <!-- module>patchwork-maven-plugin</module -->
+  <module>patchwork-main</module>
+  <module>patchwork-ui</module>
+  <module>patchwork-agent</module>
+ </modules>
+
+ <dependencies>
+
+<!-- for look and feel -->  
+  <dependency>
+   <groupId>jgoodies</groupId>
+   <artifactId>looks</artifactId>
+   <version>1.2.2</version>
+  </dependency>
+
+
+  <dependency>
+   <groupId>fr.lifl</groupId>
+   <artifactId>openjgraph</artifactId>
+   <version>1.0-SNAPSHOT</version>
+  </dependency>
+  
+  <dependency>
+   <groupId>fr.lifl</groupId>
+   <artifactId>parsing</artifactId>
+   <version>1.4-SNAPSHOT</version>
+  </dependency>
+  
+  <dependency>
+   <groupId>com.uwyn</groupId>
+   <artifactId>jhighlight</artifactId>
+   <version>1.0</version>
+  </dependency>
+ </dependencies>
+ 
+
+ <build>
+  <plugins>
+    <!-- construct source distribution -->
+    <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-assembly-plugin</artifactId>
+    <configuration>	
+     <archiveDirectory>${project.build.finalName}</archiveDirectory> 
+     <descriptors>
+      <descriptor>src/main/assembly/sources.xml</descriptor> 
+     </descriptors>
+    </configuration>	
+   </plugin>  
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-compiler-plugin</artifactId>
+    <configuration>
+     <source>1.5</source>
+     <target>1.5</target>
+    </configuration>
+   </plugin>
+
+<!--
+   <plugin>
+    <groupId>oqube.muse</groupId>
+    <artifactId>muse-maven-plugin</artifactId>
+    <inherited>false</inherited>
+    <executions>
+     <execution>
+      <id>literate</id>
+      <goals><goal>publish</goal></goals>
+      <configuration>
+       
+      </configuration>
+     </execution>
+   </executions>
+   </plugin>
+-->    
+ </plugins>
+  
+ </build>
+
+ <reporting>
+
+  <plugins>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-pmd-plugin</artifactId>
+    <configuration>
+     <targetJdk>1.5</targetJdk>
+    </configuration>
+   </plugin>
+   
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-project-info-reports-plugin</artifactId>
+    <reportSets>
+     <reportSet>
+      <reports>
+       <report>project-team</report>
+       <report>license</report>
+       <report>dependencies</report>
+       <report>issue-tracking</report>
+       <report>mailing-list</report>
+      </reports>
+     </reportSet>
+    </reportSets>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-javadoc-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-report-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-report-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>jxr-maven-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>findbugs-maven-plugin</artifactId>
+   </plugin>
+   
+  </plugins>
+ </reporting>
+
+ <profiles>
+ 
+  <profile>
+   <!-- run integration test modules -->
+   <id>it</id>
+   <modules>
+    <module>patchwork-it</module>
+   </modules>   
+  </profile>
+
+  <profile>
+   <!-- experimental modules. Not releasabel yet -->
+   <id>experimental</id>
+   <modules>
+    <module>patchwork-ct</module>
+   </modules>   
+  </profile>
+ </profiles> 
+ 
+</project>

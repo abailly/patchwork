@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Patchwork">
+ <skin>
+  <groupId>oqube</groupId>
+  <artifactId>skin-oqube</artifactId>
+  <version>1.1.2</version>
+ </skin>
+ <body>
+  
+  <menu name="Patchwork" ref="parent" />
+
+  <menu name="Build reports" ref="reports" />
+
+ </body>
+
+</project>

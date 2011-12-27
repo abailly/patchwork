@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!-- <!DOCTYPE project PUBLIC "-//ANT//DTD project//EN" "project.dtd"> -->
+
+<project name="BETh"
+         default="all"
+	 basedir=".">
+  
+  <!-- some properties -->
+  <property name="builddir" value="bin"/>
+  <property name="srcdir" value="src"/>
+  <property name="libdir" value="${basedir}"/>
+  <property name="docdir" value="doc"/>
+  
+  <!-- constructs a classpath for compiling -->
+  <path id="build.classpath"> 
+      <pathelement path="${classpath}"/>
+      <fileset dir="${libdir}">
+        <include name="**/*.jar"/>
+      </fileset>
+      <pathelement location="${builddir}"/>
+   </path>
+
+
+  <!-- initialise everything -->
+  <target name="init">
+    <tstamp/>
+    <mkdir dir="${builddir}"/>
+  </target>
+  
+  <target name="with.jikes">
+    <property name="build.compiler" value="jikes"/>
+    <property name="build.compiler.emacs" value="true"/>
+   </target>
+
+  <!-- compile all source files -->
+  <target name="compile" 
+	  depends="init" 
+	  description="Compile all source files">
+<!--
+    <property name="build.compiler" value="jikes"/>
+    <property name="build.compiler.emacs" value="true"/>
+-->
+    <!-- copy ressources to final directory -->
+    <copy toDir="${builddir}">
+           <fileset dir="${srcdir}">
+                 <patternset>
+                    <include name="**/*.properties"/>
+                  </patternset>
+           </fileset>
+        </copy>    
+    <javac srcdir="${srcdir}" 
+	   destdir="${builddir}">
+      <classpath refid="build.classpath"/>
+    </javac>    
+  </target>
+  
+  <!-- make a jarfile of everything compiled -->
+  <target name="dist"
+	  depends="compile"
+	  description="Make an archive of compiled files">
+    <jar jarfile="${basedir}/BET.jar"
+	 basedir="${builddir}"/>
+    <copy toDir="${libdir}" file="${basedir}/BET.jar"/>
+  </target>
+  
+  <!-- cleanup -->
+  <target name="clean"
+	  description="Remove all compiled files"
+	  depends="init">	       
+    <delete dir="${builddir}"/>
+    <delete dir="${docdir}"/>
+    <!-- remove emacs backup files -->
+    <delete verbose="true">
+      <fileset dir="${basedir}" defaultexcludes="no">
+           <include name="**/*~"/>
+         </fileset>
+    </delete>
+    <!-- remove raw TEST results -->
+    <delete verbose="true">
+      <fileset dir="${basedir}">
+         <include name="TEST-*.xml"/>
+       </fileset>
+    </delete>
+  </target>
+  
+  <!-- pass all builtin test cases -->
+  <target name="test" 
+	  description="Make all tests"
+	  depends="compile">
+    <junit printsummary="on" haltonfailure="no">
+          <classpath refid="build.classpath"/>
+          <formatter type="xml" />
+          <batchtest fork="yes" todir="${basedir}">
+             <fileset dir="${builddir}">
+                 <include name="**/*Test.class" />
+            </fileset>
+          </batchtest>
+      </junit>
+  </target>
+  
+  <!-- generate documentation (API) and test reports -->
+  <target name="doc"
+           description="Make javadoc"
+	  depends="init">
+    <!-- define useful properties -->
+    <property name="WINDOWTITLE"  value="Norsys - Bytecode Engineering Toolkit"/> 
+    <!-- create doc dir if does not exist -->
+    <mkdir dir="${docdir}"/>
+    <!-- javadoc task -->
+    <javadoc packagenames="fr.norsys.*"
+	     sourcepath="${srcdir}"
+	     destdir="${docdir}"
+	     author="true"
+	     version="true"
+	     use="true"
+	     windowtitle="${WINDOWTITLE}" >
+      <doctitle>
+              <![CDATA[Norsys - Documentation BETh]]>
+          </doctitle>
+      <header>
+              <![CDATA[<b>NORSYS</b><br><font size=\"-1\\">v0.1</font>]]>
+          </header>
+      <bottom>
+              <![CDATA[<font size="-1"><a href="http://www.norsys.fr">NORSYS</a></font>]]>
+          </bottom>
+    </javadoc>
+  </target>
+
+  <target name="junitreport"
+          depends="test">
+    <!-- format junit reports -->
+    <junitreport todir="${docdir}">
+       <fileset dir="${basedir}">
+         <include name="TEST-*.xml"/>
+       </fileset>
+       <report format="frames" todir="${docdir}/tests"/>
+     </junitreport>
+     </target>
+  <!-- make everything -->
+  <target name="all" depends="init,compile,test,doc,dist"/>
+  
+</project>
+

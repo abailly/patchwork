@@ -1,0 +1,27 @@
+.source {
+background-color: #eef;
+font-family: monospace;
+}
+
+.source a[href] {
+background-color: white;
+color: ligthblue;
+font-style: italic;
+text-decoration: none;
+}
+
+.code_type {
+color: blue;
+}
+
+.code_comment {
+color: red;
+}
+
+.code_comment{
+color: grey;
+}
+
+.code_keyword {
+font-weight: bold;
+}

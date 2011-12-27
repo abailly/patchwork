@@ -1,0 +1,9 @@
+#title Code coverage and testing
+#author Arnaud Bailly
+
+This chapter shall contains  information regarding *code coverage*
+measures. It presently contains:
+ - a [[control-flow.muse][technical]] introduction to control flow and basic blocks,
+ - a [[coverage-sample.muse][quick review]] of some major control-flow based coverage metrics,
+ - an article on the relationship between [[tdd-coverage.muse][TDD and Coverage]] metrics,
+ - an [[scala-coverage.muse][overview]] of using Patchwork with Scala.

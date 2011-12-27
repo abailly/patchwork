@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<project name="Patchwork">
+ <publishDate position="bottom" format="dd-MM-yyyy"/>
+ <skin>
+  <groupId>oqube</groupId>
+  <artifactId>skin-oqube</artifactId>
+  <version>1.1.2</version>
+ </skin>
+ <poweredBy>
+   <logo
+    name="Powered by Emacs Muse"
+    href="http://www.mwolson.org/projects/EmacsMuse.html"       
+    img="images/emacsmuse.png"/>
+  <logo
+   name="Build with Maven 2"
+   href="http://maven.apache.org"
+   img="images/mavenbuilt.png"/>
+  <logo
+   name="Made by OQube, software engineering"
+   href="http://www.oqube.com"
+   img="images/oqube.png"/>
+ </poweredBy>  
+ 
+ <body>
+
+  <menu name="Documentation">
+   <item name="OQube" href="http://www.oqube.com/"/>
+   <item name="Introduction" href="index.html"/>
+   <item name="What's New" href="news.html"/>
+   <item name="Project's Admin" href="http://code.google.com/p/patchwork-cover/"/>
+   <item name="Downloads" href="http://code.google.com/p/patchwork-cover/downloads/list"/>
+   <item name="Install and use" href="usage/index.html">
+    <item name="Command-line" href="usage/cli.html"/>
+    <item name="Maven plugin" href="usage/maven.html"/>
+    <item name="Extending Patchwork" href="usage/extending.html"/>
+   </item>
+   <item name="Patchwork coverage" href="coverage/index.html">
+    <item name="Control flow and technical details" href="coverage/control-flow.html" />
+    <item name="Various coverage measures" href="coverage/coverage-sample.html" />
+    <item name="TDD and coverage" href="coverage/tdd-coverage.html"/>
+    <item name="Coverage for Scala" href="coverage/scala-coverage.html"/>
+   </item>
+  </menu>
+
+  <menu name="Modules" ref="modules" />
+
+  <menu name="Reports" ref="reports" />
+
+ </body>
+
+</project>

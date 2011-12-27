@@ -1,0 +1,30 @@
+[INFO] Scanning for projects...
+[INFO] ------------------------------------------------------------------------
+[INFO] Building Bytecode Engineering Toolkit
+[INFO]    task-segment: [clean, install]
+[INFO] ------------------------------------------------------------------------
+[INFO] [clean:clean {execution: default-clean}]
+[INFO] Deleting directory /home/nono/projets/patchwork/patchwork-bytes/target
+[INFO] [resources:resources {execution: default-resources}]
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] skip non existing resourceDirectory /home/nono/projets/patchwork/patchwork-bytes/src/main/resources
+[INFO] [compiler:compile {execution: default-compile}]
+[INFO] Compiling 74 source files to /home/nono/projets/patchwork/patchwork-bytes/target/classes
+[INFO] [resources:testResources {execution: default-testResources}]
+[WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+[INFO] Copying 2 resources
+[INFO] [compiler:testCompile {execution: default-testCompile}]
+[INFO] Not compiling test sources
+[INFO] [surefire:test {execution: default-test}]
+[INFO] Tests are skipped.
+[INFO] [jar:jar {execution: default-jar}]
+[INFO] Building jar: /home/nono/projets/patchwork/patchwork-bytes/target/patchwork-bytes-4-SNAPSHOT.jar
+[INFO] [install:install {execution: default-install}]
+[INFO] Installing /home/nono/projets/patchwork/patchwork-bytes/target/patchwork-bytes-4-SNAPSHOT.jar to /home/nono/.m2/repository/oqube/patchwork/patchwork-bytes/4-SNAPSHOT/patchwork-bytes-4-SNAPSHOT.jar
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESSFUL
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 5 seconds
+[INFO] Finished at: Fri Nov 27 11:33:32 CET 2009
+[INFO] Final Memory: 15M/27M
+[INFO] ------------------------------------------------------------------------

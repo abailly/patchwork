@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding = "Windows-1252"?>
+<VisualStudioProject
+	ProjectType="Visual C++"
+	Version="9.00"
+	Name="PatchworkAgent"
+	ProjectGUID="{D564E063-47DA-4931-BBC8-12752745A6F4}"
+	Keyword="Win32Proj">
+	<Platforms>
+		<Platform
+			Name="Win32"/>
+	</Platforms>
+	<Configurations>
+		<Configuration
+			Name="Debug|Win32"
+			OutputDirectory="Debug"
+			IntermediateDirectory="PatchworkAgent.dir\Debug"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				AdditionalIncludeDirectories="c:\jdk1.6.0_06\include;c:\jdk1.6.0_06\include\win32;D:\projets\patchwork\patchwork-native\include;"
+				BasicRuntimeChecks="3"
+				CompileAs="1"
+				DebugInformationFormat="3"
+				ExceptionHandling="0"
+				InlineFunctionExpansion="0"
+				Optimization="0"
+				RuntimeLibrary="3"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32,_WINDOWS,_DEBUG,CMAKE_INTDIR=\&quot;Debug\&quot;,PatchworkAgent_EXPORTS"
+				AssemblerListingLocation="Debug"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="D:\projets\patchwork\patchwork-native\Debug/PatchworkAgent.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="c:\jdk1.6.0_06\include;c:\jdk1.6.0_06\include\win32;D:\projets\patchwork\patchwork-native\include;"
+				PreprocessorDefinitions="WIN32,_WINDOWS,_DEBUG,CMAKE_INTDIR=\&quot;Debug\&quot;,PatchworkAgent_EXPORTS"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="WIN32,_WINDOWS,_DEBUG,CMAKE_INTDIR=\&quot;Debug\&quot;,PatchworkAgent_EXPORTS"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86 /debug"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  c:\jdk1.6.0_06\\lib\jawt.lib c:\jdk1.6.0_06\\lib\jvm.lib Ws2_32.lib WINMM.lib "
+				OutputFile="D:\projets\patchwork\patchwork-native\Debug\PatchworkAgent.dll"
+				Version="0.0"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories=""
+				ProgramDatabaseFile="D:\projets\patchwork\patchwork-native\Debug\PatchworkAgent.pdb"
+				GenerateDebugInformation="TRUE"
+				ImportLibrary="D:\projets\patchwork\patchwork-native\Debug\PatchworkAgent.lib"/>
+		</Configuration>
+		<Configuration
+			Name="Release|Win32"
+			OutputDirectory="Release"
+			IntermediateDirectory="PatchworkAgent.dir\Release"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				AdditionalIncludeDirectories="c:\jdk1.6.0_06\include;c:\jdk1.6.0_06\include\win32;D:\projets\patchwork\patchwork-native\include;"
+				CompileAs="1"
+				ExceptionHandling="0"
+				InlineFunctionExpansion="2"
+				Optimization="2"
+				RuntimeLibrary="2"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;Release\&quot;,PatchworkAgent_EXPORTS"
+				AssemblerListingLocation="Release"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="D:\projets\patchwork\patchwork-native\Release/PatchworkAgent.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="c:\jdk1.6.0_06\include;c:\jdk1.6.0_06\include\win32;D:\projets\patchwork\patchwork-native\include;"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;Release\&quot;,PatchworkAgent_EXPORTS"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;Release\&quot;,PatchworkAgent_EXPORTS"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  c:\jdk1.6.0_06\\lib\jawt.lib c:\jdk1.6.0_06\\lib\jvm.lib Ws2_32.lib WINMM.lib "
+				OutputFile="D:\projets\patchwork\patchwork-native\Release\PatchworkAgent.dll"
+				Version="0.0"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories=""
+				ProgramDatabaseFile="D:\projets\patchwork\patchwork-native\Release\PatchworkAgent.pdb"
+				ImportLibrary="D:\projets\patchwork\patchwork-native\Release\PatchworkAgent.lib"/>
+		</Configuration>
+		<Configuration
+			Name="MinSizeRel|Win32"
+			OutputDirectory="MinSizeRel"
+			IntermediateDirectory="PatchworkAgent.dir\MinSizeRel"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				AdditionalIncludeDirectories="c:\jdk1.6.0_06\include;c:\jdk1.6.0_06\include\win32;D:\projets\patchwork\patchwork-native\include;"
+				CompileAs="1"
+				ExceptionHandling="0"
+				InlineFunctionExpansion="1"
+				Optimization="1"
+				RuntimeLibrary="2"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;MinSizeRel\&quot;,PatchworkAgent_EXPORTS"
+				AssemblerListingLocation="MinSizeRel"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="D:\projets\patchwork\patchwork-native\MinSizeRel/PatchworkAgent.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="c:\jdk1.6.0_06\include;c:\jdk1.6.0_06\include\win32;D:\projets\patchwork\patchwork-native\include;"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;MinSizeRel\&quot;,PatchworkAgent_EXPORTS"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;MinSizeRel\&quot;,PatchworkAgent_EXPORTS"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  c:\jdk1.6.0_06\\lib\jawt.lib c:\jdk1.6.0_06\\lib\jvm.lib Ws2_32.lib WINMM.lib "
+				OutputFile="D:\projets\patchwork\patchwork-native\MinSizeRel\PatchworkAgent.dll"
+				Version="0.0"
+				LinkIncremental="1"
+				AdditionalLibraryDirectories=""
+				ProgramDatabaseFile="D:\projets\patchwork\patchwork-native\MinSizeRel\PatchworkAgent.pdb"
+				ImportLibrary="D:\projets\patchwork\patchwork-native\MinSizeRel\PatchworkAgent.lib"/>
+		</Configuration>
+		<Configuration
+			Name="RelWithDebInfo|Win32"
+			OutputDirectory="RelWithDebInfo"
+			IntermediateDirectory="PatchworkAgent.dir\RelWithDebInfo"
+			ConfigurationType="2"
+			UseOfMFC="0"
+			ATLMinimizesCRunTimeLibraryUsage="FALSE"
+			CharacterSet="2">
+			<Tool
+				Name="VCCLCompilerTool"
+				AdditionalOptions=" /Zm1000"
+				AdditionalIncludeDirectories="c:\jdk1.6.0_06\include;c:\jdk1.6.0_06\include\win32;D:\projets\patchwork\patchwork-native\include;"
+				CompileAs="1"
+				DebugInformationFormat="3"
+				ExceptionHandling="0"
+				InlineFunctionExpansion="1"
+				Optimization="2"
+				RuntimeLibrary="2"
+				WarningLevel="3"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;,PatchworkAgent_EXPORTS"
+				AssemblerListingLocation="RelWithDebInfo"
+				ObjectFile="$(IntDir)\"
+				ProgramDataBaseFileName="D:\projets\patchwork\patchwork-native\RelWithDebInfo/PatchworkAgent.pdb"
+/>
+			<Tool
+				Name="VCCustomBuildTool"/>
+			<Tool
+				Name="VCResourceCompilerTool"
+				AdditionalIncludeDirectories="c:\jdk1.6.0_06\include;c:\jdk1.6.0_06\include\win32;D:\projets\patchwork\patchwork-native\include;"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;,PatchworkAgent_EXPORTS"/>
+			<Tool
+				Name="VCMIDLTool"
+				PreprocessorDefinitions="WIN32,_WINDOWS,NDEBUG,CMAKE_INTDIR=\&quot;RelWithDebInfo\&quot;,PatchworkAgent_EXPORTS"
+				MkTypLibCompatible="FALSE"
+				TargetEnvironment="1"
+				GenerateStublessProxies="TRUE"
+				TypeLibraryName="$(InputName).tlb"
+				OutputDirectory="$(IntDir)"
+				HeaderFileName="$(InputName).h"
+				DLLDataFileName=""
+				InterfaceIdentifierFileName="$(InputName)_i.c"
+				ProxyFileName="$(InputName)_p.c"/>
+			<Tool
+				Name="VCPreBuildEventTool"/>
+			<Tool
+				Name="VCPreLinkEventTool"/>
+			<Tool
+				Name="VCPostBuildEventTool"/>
+			<Tool
+				Name="VCLinkerTool"
+				LinkLibraryDependencies="false"
+				AdditionalOptions=" /STACK:10000000 /machine:X86 /debug"
+				AdditionalDependencies="$(NOINHERIT) kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib  c:\jdk1.6.0_06\\lib\jawt.lib c:\jdk1.6.0_06\\lib\jvm.lib Ws2_32.lib WINMM.lib "
+				OutputFile="D:\projets\patchwork\patchwork-native\RelWithDebInfo\PatchworkAgent.dll"
+				Version="0.0"
+				LinkIncremental="2"
+				AdditionalLibraryDirectories=""
+				ProgramDatabaseFile="D:\projets\patchwork\patchwork-native\RelWithDebInfo\PatchworkAgent.pdb"
+				GenerateDebugInformation="TRUE"
+				ImportLibrary="D:\projets\patchwork\patchwork-native\RelWithDebInfo\PatchworkAgent.lib"/>
+		</Configuration>
+	</Configurations>
+	<Files>
+			<File
+				RelativePath="D:\projets\patchwork\patchwork-native\CMakeLists.txt">
+				<FileConfiguration
+					Name="Debug|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule D:/projets/patchwork/patchwork-native/CMakeLists.txt"
+					CommandLine="&quot;d:\Program Files\CMake-2.8\bin\cmake.exe&quot; -HD:/projets/patchwork/patchwork-native -BD:/projets/patchwork/patchwork-native --check-stamp-file D:\projets\patchwork\patchwork-native\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto VCReportError"
+					AdditionalDependencies="D:\projets\patchwork\patchwork-native\CMakeLists.txt;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeSystem.cmake;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCCompiler.cmake;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCXXCompiler.cmake;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeSystemSpecificInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeGenericSystem.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\Windows.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\WindowsPaths.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\Windows-cl.cmake&quot;;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCPlatform.cmake;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCXXPlatform.cmake;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\cl.cmake&quot;;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeRCCompiler.cmake;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeRCInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCXXInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;D:\projets\patchwork\patchwork-native\CMakeLists.txt;"
+					Outputs="D:\projets\patchwork\patchwork-native\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="Release|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule D:/projets/patchwork/patchwork-native/CMakeLists.txt"
+					CommandLine="&quot;d:\Program Files\CMake-2.8\bin\cmake.exe&quot; -HD:/projets/patchwork/patchwork-native -BD:/projets/patchwork/patchwork-native --check-stamp-file D:\projets\patchwork\patchwork-native\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto VCReportError"
+					AdditionalDependencies="D:\projets\patchwork\patchwork-native\CMakeLists.txt;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeSystem.cmake;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCCompiler.cmake;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCXXCompiler.cmake;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeSystemSpecificInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeGenericSystem.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\Windows.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\WindowsPaths.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\Windows-cl.cmake&quot;;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCPlatform.cmake;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCXXPlatform.cmake;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\cl.cmake&quot;;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeRCCompiler.cmake;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeRCInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCXXInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;D:\projets\patchwork\patchwork-native\CMakeLists.txt;"
+					Outputs="D:\projets\patchwork\patchwork-native\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="MinSizeRel|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule D:/projets/patchwork/patchwork-native/CMakeLists.txt"
+					CommandLine="&quot;d:\Program Files\CMake-2.8\bin\cmake.exe&quot; -HD:/projets/patchwork/patchwork-native -BD:/projets/patchwork/patchwork-native --check-stamp-file D:\projets\patchwork\patchwork-native\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto VCReportError"
+					AdditionalDependencies="D:\projets\patchwork\patchwork-native\CMakeLists.txt;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeSystem.cmake;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCCompiler.cmake;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCXXCompiler.cmake;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeSystemSpecificInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeGenericSystem.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\Windows.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\WindowsPaths.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\Windows-cl.cmake&quot;;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCPlatform.cmake;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCXXPlatform.cmake;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\cl.cmake&quot;;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeRCCompiler.cmake;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeRCInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCXXInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;D:\projets\patchwork\patchwork-native\CMakeLists.txt;"
+					Outputs="D:\projets\patchwork\patchwork-native\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+				<FileConfiguration
+					Name="RelWithDebInfo|Win32">
+					<Tool
+					Name="VCCustomBuildTool"
+					Description="Building Custom Rule D:/projets/patchwork/patchwork-native/CMakeLists.txt"
+					CommandLine="&quot;d:\Program Files\CMake-2.8\bin\cmake.exe&quot; -HD:/projets/patchwork/patchwork-native -BD:/projets/patchwork/patchwork-native --check-stamp-file D:\projets\patchwork\patchwork-native\CMakeFiles\generate.stamp&#x0D;&#x0A;if errorlevel 1 goto VCReportError"
+					AdditionalDependencies="D:\projets\patchwork\patchwork-native\CMakeLists.txt;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeSystem.cmake;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCCompiler.cmake;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCXXCompiler.cmake;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeSystemSpecificInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeGenericSystem.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\Windows.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\WindowsPaths.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\Windows-cl.cmake&quot;;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCPlatform.cmake;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeCXXPlatform.cmake;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\Platform\cl.cmake&quot;;D:\projets\patchwork\patchwork-native\CMakeFiles\CMakeRCCompiler.cmake;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeRCInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCXXInformation.cmake&quot;;&quot;D:\Program Files\CMake-2.8\share\cmake-2.8\Modules\CMakeCommonLanguageInclude.cmake&quot;;D:\projets\patchwork\patchwork-native\CMakeLists.txt;"
+					Outputs="D:\projets\patchwork\patchwork-native\CMakeFiles\generate.stamp"/>
+				</FileConfiguration>
+			</File>
+		<Filter
+			Name="Source Files"
+			Filter="">
+			<File
+				RelativePath="D:\projets\patchwork\patchwork-native\src\agent.c">
+			</File>
+		</Filter>
+	</Files>
+	<Globals>
+	</Globals>
+</VisualStudioProject>

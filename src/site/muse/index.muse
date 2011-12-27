@@ -1,0 +1,117 @@
+#title Patchwork
+#author Arnaud Bailly 
+
+* Introduction
+
+** What is it ?
+
+Patchwork aims to be a general purpose *coverage analysis tool* for Java
+bytecode program. Its main objective is to provide a framework and
+some basic tools for creating custom coverage reports and use advanced
+or non standard coverage metrics. 
+
+** Current features 
+
+Its **current** feature list is not really impressive, but it works (at
+least for me !): 
+ - provide coverage information from tests executions extracted at the
+   bytecode level, which means *any* language targeting JVM bytecode can
+   be covered with Patchwork,
+ - built-in *all-nodes*, *all-edges* and *all-du-pairs* coverage metrics,
+   with possibility to use any combination of these,
+ - provide executed source lines mapping (if code compiled with source
+   lines information) for each executed file,
+ - aggregate numbers at class and package levels,
+ - a basic GUI tool to view control graphs for all methods of a class,
+ - generate XHTML report linked to source files coverage information,
+ - run from the command-line or as a maven2 plugin.
+
+A sample report (created from maven plugin) has been generated for
+project [[http://www.oqube.com/projects/muse-java/muse-parser/patchwork.html][Muse Parser]].
+
+** Planned features
+
+Its **planned** features list is of course much more important. Here is a list of
+the most important things I am planning to do on Patchwork, given some more time to
+work on it:
+ - clean PMD and Findbugs reports,
+ - better looking reports,
+ - make patchwork work on Patchwork. There are a couples of issue
+   related to classloading that prevented direct usage of Patchwork
+   coverage measure on the Patchwork library itself,
+ - add more control-flow coverage measures. Likely candidates are:
+   Independent path coverage (*aka.* McCabe Coverage), *all-start-end*
+   elementary paths, 
+ - add network backend with splitter/gather flows for speeding up
+   coverage information processing,
+ - add a tool for *continuous testing and coverage report*, which means
+   reporting in real time (as the tests/sources are written and saved
+   to disk) the test failures and code coverage achieved (see
+   [[http://benrady.com/blojsom/blog/default/java/?permalink=A4130A54D03CF654B10CB332B992E822.txt][Ben Rady's]] infinitest),
+ - add a lot more tests to Patchwork and remove the numerous bugs it contains.
+
+Here is a list of less urgent things that may be done at some time in
+the future:
+ - add data-flow coverage measures. This means adding a new
+   instrumentation class for capturing data entering methods and
+   checking these values against some predefined sets or constraints.
+
+* Why ?
+
+Code coverage measure is 
+There already exists coverage tools for Java, working at the bytecode
+or source level, some of which are: 
+ - [[http://cobertura.sourceforge.net/]] : open-source tool forked from
+   JCoverage community version, seems to be the most widely used tool
+   as far as Java/maven projects are concerned,
+ - [[http://www.jcoverage.com/]] : commercial tool with a community
+   version that has several limitations,
+ - [[http://www.cenqua.com/clover/]] : commercial tool, very nice GUI and
+   lot of *enterprisey* features, version 2.0 is coming out soon, 
+ - [[http://quilt.sourceforge.net/]] : seems to be an orphan project,
+ - [[http://emma.sourceforge.net/]] : build on the same basic unit of
+   coverage than Patchwork, namely the basic blocks. But only handles
+   blocks coverage, not edges coverage nor more powerful measures. 
+
+These tools are good but they all provide the same simple coverage
+measures: *line* and *branch*, which are the least powerful coverage
+measures for software defect detection. For an example of the
+difference between Cobertura and Patchwork, see the
+[[./coverage/tdd-coverage.muse][TDD and Coverage]] page. Emma is closest to Patchwork in its
+underpinnings. 
+
+What I wanted to do was an *extensible* coverage tool in which one could
+plug in its own measure and tailor it to its needs. Any practitioner
+knows fairly well that achieving even 100% line coverage requires
+tremendous efforts: As a basic rule of thumb, the effort is
+exponential as coverage increase. So why would someone need more
+sophisticated measures that would require more tests ? To manage
+risks. While 90% line coverage may be enough for simple components
+that do simple transformations or fulfill mainly simple hand-over
+tasks like transforming input strings into more complex objects, one
+may want to achieve 100% du-pairs or all-start-end-elementary-paths
+coverage on a core class. 
+
+Moreover, I wanted a tool to explore the relationship that one can infer from code
+coverage measures at the lowest-level to higher-level models or
+requirements. The later part is still in preliminary design phase, but
+I hope to have something to demonstrate real soon. 
+
+Finally, patchwork grew out of my interest for manipulating Java
+bytecode. It [[patchwork-bytes][includes]] a simple library for manipulating class files
+and works by directly modifying class files while they are being
+loaded for testing. 
+
+* Caveats
+
+This tool is in its early development stage and may not be suited to
+production use, in particular for large projects where performance is
+needed. Precise coverage information means a lot of data has to be
+processed, which may take a lot of time. 
+
+Some further limitations are described in the [[./coverage/control-flow.muse][Technical details]] page,
+in particular related to the way coverage measures are computed. These
+limitations may yield to inaccuracy in the line covered information. 
+
+Feedback, suggestions and comments about this work are welcomed: Mail
+to =abailly arobase oqube point com=.

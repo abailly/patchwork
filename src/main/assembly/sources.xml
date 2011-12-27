@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1250"?>
+<assembly>
+  <id>src</id>
+  <formats>
+    <format>zip</format>
+    <format>tar.gz</format>
+  </formats>
+  <includeBaseDirectory>false</includeBaseDirectory>
+  <moduleSets>
+    <moduleSet>
+      <includes>
+        <include>oqube.patchwork:patchwork-bytes</include>
+        <include>oqube.patchwork:patchwork-control</include>
+        <include>oqube.patchwork:patchwork-ui</include>
+        <include>oqube.patchwork:patchwork-main</include>
+        <include>oqube.patchwork:patchwork-maven-plugin</include>
+        <include>oqube.patchwork:patchwork-it</include>
+      </includes>
+      <sources>
+    <fileSets>
+     <fileSet>
+      <outputDirectory>patchwork/${artifactId}</outputDirectory>
+     </fileSet>
+    </fileSets>
+   </sources>
+  </moduleSet>
+ </moduleSets>
+ <fileSets>
+  <fileSet>
+   <includes>
+    <include>
+     pom.xml
+    </include>
+   </includes>
+   <outputDirectory>patchwork/</outputDirectory>
+  </fileSet>
+  <fileSet>
+   <directory>src</directory>
+   <outputDirectory>patchwork/src</outputDirectory>
+  </fileSet>
+ </fileSets>
+</assembly>

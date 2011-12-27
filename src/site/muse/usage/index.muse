@@ -1,0 +1,60 @@
+#title Installing and using Patchwork
+#author Arnaud Bailly
+
+* Installing patchwork
+
+Patchwork can be downloaded either as a binary package or as a source
+code. Please see the [[http://code.google.com/p/patchwork-cover/downloads/list][Downloads]] page for details of available
+distributions.
+
+** Binary install
+
+Binary package for patchwork contains [[./cli.muse][command-line]] interface for
+computing coverage data, as well as [[./gui.muse][GUI]] program for displaying
+dependency, call and control graphs for a set of classes.
+
+Installation from binary distribution is simple:
+ 1. unpack the chosen archive in some directory. eg. in Linux:
+<example>
+$> wget http://patchwork-cover.googlecode.com/files/patchwork-3-bin.tar.gz
+$> tar xzf patchwork-3-bin.tar.gz
+</example>
+ 2. if this is not already done, set the environment variable
+    =JAVA_HOME= to point to the root directory of the version of java
+    you are using, eg. in Bourne Shell on Unix:
+<example>
+$> export JAVA_HOME=/usr/local/java/
+</example>
+ 3. you can run from the choosen command-line program, either
+    =patchwork.sh= for coverage or =graph.sh= for dependency graph
+    visualization. 
+
+** Source install
+
+Source distribution contains the source for all patchwork
+components. To build patchwork from source, you will need:
+ 1. [[http://maven.apache.org][Maven 2]] installed on your system. Version 2.0.6 is most recent,
+ 2. a JDK version 1.5 or greater,
+ 3. access to the internet for downloading dependencies.
+
+Installation from source is nearly as simple as from binaries:
+ 1. download and unpack archive in some directory:
+<example>
+$> wget http://patchwork-cover.googlecode.com/files/patchwork-3-bin.tar.gz
+$> tar xzf patchwork-3-bin.tar.gz
+</example>
+ 2. build everything with maven:
+<example>
+$> cd patchwork
+$> mvn install
+</example>
+ 3. *(optional)* build binary distribution:
+<example>
+$> cd patchwork-main; mvn assembly:assembly
+</example>
+
+* Using patchwork
+
+Patchwork can be used either from the [[./cli.muse][Command-line]] or as a
+[[./maven.muse][Maven 2]] plugin. By far the easiest way right now is to use maven. 
+There is also a [[./gui.muse][GUI]] interface for displaying dependency graph.

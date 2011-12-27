@@ -1,0 +1,7 @@
+#title Patchwork Control
+#author Arnaud Bailly 
+
+* Introduction
+
+This module contains Launcher class and shell scripts for easy
+starting of Patchwork applications.

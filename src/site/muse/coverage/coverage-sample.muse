@@ -1,0 +1,343 @@
+#title Shortcomings of simple coverage measures
+#author Arnaud Bailly - OQube Software Engineering -  abailly@oqube.com
+
+* Introduction
+
+Current state-of-the-practice coverage tools, in particular
+commonly used open-source tools such as Cobertura, Emma, or
+commercial ones like Clover and JCoverage, produces coverage
+measurements in term of *line-* and *branch-*coverage. It
+is well known among seasoned testers[[#marick,bullseyes]] that
+such measures yield poor defect detection rate. 
+  
+Moreover, various academic analysis and studies, either through
+experiments[[#ntafos]] or mathematical proofs[[#frankl]] have consistently shown that to
+achieve effective probabilities of defect removal, one has to use more
+sophisticated measures than line or branch coverage, or use a mix of
+approach to testing software.
+
+The goal of this short article is to illustrate through examples in
+Java programming language what kind of defects can slip through one
+coverage goal and what kind are captured by other coverage
+objectives. 
+
+* Control flow coverage
+
+We shall use as our running example the following class 
+
+<source name="oqube/Coverage.java">
+package oqube;
+
+/**
+ * Sample code repository to illustrate sthortcomings of line 
+ * and branch coverage.
+ * 
+ * @author abailly@oqube.com
+ * @version $Id$
+ */
+public class Coverage {
+<<code_to_be_covered>>
+}
+</source> 
+
+and its companion test cases in the classes =CoverageTest.java=
+and =HigherCoverageTest.java=. The  former holds all test cases
+allowing one to reach 100% branch coverage 
+
+<source name="oqube/CoverageTest.java">
+package oqube;
+
+  /**
+   * Sample test cases.
+   * Test cases in this class reports 100% branch coverage.
+   */
+public class CoverageTest extends TestCase {
+<<branch_test_cases>>
+}
+</source> 
+
+while the latter hold
+supplementary test cases to illustrate the different coverage measures
+used in this article.
+<source name="oqube/HigherCoverageTest.java">
+package oqube;
+
+  /**
+   * Sample test cases.
+   * Test cases in this class reports 100% coverage 
+   * for different measures.
+   */
+public class HigherCoverageTest extends TestCase {
+<<other_test_cases>>
+}
+</source> 
+
+This section deals with various kind of *control-flow coverage*
+measures. These coverage criteria are all built from the control flow
+of the method(s) that make up the tested code and they are measuring
+some metrics based on which parts of the code have been exercized
+through testing. We put in this class *data-flow coverage* which
+is traditionally distinguished from control-flow coverage because it
+is too constructed from information stating whether or not certain
+paths in the code have been executed or not.
+
+** Condition-Decision Coverage
+
+The *condition-decision coverage* (CDC in short) and its
+companion *modified condition-decision coverage* is the
+composition of *decision coverage* ---~an alternate name for 
+branch coverage or all-edges coverage~--- than requires test cases to
+cover every *edge* in the control-flow graph of the tested code;
+and *condition coverage* that requires test cases to cover every
+outcome of sub-expressions in compound predicates.  Note that this
+distinction is relevant only when you measure coverage 
+at source-code level. At bytecode or assembly instructions level,
+condition coverage and decision coverage are the same: all-edges
+coverage. 
+
+Given a logical predicate $P(x_1, x_2 ... x_n)$ where each $x_i$ is
+a logical variable: a logical proposition s.t. $x \leq 12$ or a
+boolean variable $z$; an
+adequate test suite is one that provides two test cases $(x_1^1, x_2^1 ... x_n^1)$ and  $(x_1^2, x_2^2 ... x_n^2)$ for each $x_i$
+: 
+ - $P(x_1^1, x_2^1 ... x_n^1) \ne P(x_1^2, x_2^2 ... x_n^2)$,
+ -  $x_i^1 \ne x_i^2$,
+ - and $x_j^1 \ne x_j^2$ for each $j$,$j\ne i$.
+
+In other words, one must provide test cases that exhibit the result 
+from modifying each predicate independently of the others. 
+
+The graph definition is more concise: Given a representation of
+the predicate $P$ as a binary decision diagram (a directed acyclic
+graph with each variable as interior nodes and constant **true**
+and **false** as leafs), an adequate test case for the MCDC
+objective is one that cover *all-edges* of the graph which
+happens to be the same as covering *all-$(s,t)$-paths* (see below). 
+
+If the
+number of logical variables is $n$, then there are $n+1$ test cases if
+all variables are independent.
+Here is a sample method that illustrates difference between branch and (M)CDC: 
+
+<source name="code_to_be_covered"> 
+
+  public int sampleMcdc(int i, int j) {
+    int k;
+    if(i<0 && (i+j >=0 || j < 0))
+      return 1;
+    else 
+      return  2;  
+  }
+</source>  
+
+You need two test cases to reach branch coverage:
+
+<source name="branch_test_cases">
+  public void testMcdc01() {
+    assertEquals(1,sampleMcdc(-2,3));
+  }
+
+  public void testMcdc02() {
+    assertEquals(2,sampleMcdc(0,-1));
+  }
+</source> 
+
+To reach (M)CDC coverage, you need one more test:
+
+<source name="other_test_cases">
+  public void testMcdc() {
+    assertEquals(1,sampleMcdc(-2,-3));
+  }
+</source> 
+
+As pointed out in eg. [[#marick-experiment]] and any serious book
+about testing, there exists required test cases that may be
+infeasible. This is often the case if the logical variables in the
+predicate are not indenpendent and in this case, it is certainly a
+witness for some design flaw. 
+
+** Cyclomatic complexity coverage
+
+A control flow graph of some piece of code contains two distinguished
+vertices, labelled respectively $s$ and $t$ that represents entry and
+exit into that piece of code. These nodes have the property that no
+edge enters $s$ and no edge leaves $t$. 
+
+A path $p$ from vertex $n$ to vertex $m$ or $(n,m)$-path for short is independent of a set
+of paths $P$ iff $p$ cannot be expressed as a linear combination of
+elements of $P$. This assumes that use the subsets of edges $E$ in the
+graph as the basis for a vector space over $\mathbb{Z}$. 
+
+The cyclomatic complexity of a graph $G=(V,E)$, also known as McCabe
+Complexity[[#mccabe]], is defined as:
+$$
+{\cal C}(G) = \mid E \mid - \mid V\mid + p,
+$$
+where $p$ is the number of strongly connected components in the
+graph. This number is used indirectly as a test coverage criterion
+[[#stickney-graph-test,mccabe-structured-testing]]: It states the
+dimension of a basis of the cycle vector space, ie. the size of
+independent set of paths from which all other cycles can be
+constructed through linear combination. Note that in the original
+formulation from [[#mccabe-structured-testing]], a virtual edge is
+added between end and start vertices which make the whole  control
+graph strongly connected and so implies that $p=1$. Then 
+$$
+{\cal C}(G) = \mid E \mid - \mid V\mid + 1.
+$$
+
+
+So this criterion requires that a test set be constructed of such a
+basis to be adequate. 
+
+The following method computes the sum off all numbers up to a given
+number $i$:
+
+<source name="code_to_be_covered">
+  public int loop(int i) {
+    int acc = 0;
+    for(int j=0;j<i;j++)
+      acc += j;
+    return acc;
+  }
+</source> 
+
+The test case adequate for branch coverage is:
+
+<source name="branch_test_cases">
+  public void testLoop() {
+    assertEquals(10,loop(5));
+  }
+</source> 
+
+To reach independent path coverage, you need to add the following
+test:
+
+<source name="other_test_cases">
+  public void testLoopNotInBody() {
+    assertEquals(0,loop(0));
+  }
+</source> 
+
+One can also use the *weak structured testing* criterion that requires
+branch coverage and a number of test cases equal to the cyclomatic
+number. 
+
+** All simple paths coverage
+
+If one views the control flow graph of a method as *finite state
+automaton* $A$ with one initial state and one terminal state, then an
+interesting criterion can be the coverage of all accepted words in
+${\cal L}(A)$ that do not contain iterating factors. In other words,
+one has to cover all paths from start to end that do not repeat
+loops. 
+This coverage criterion is simply the MCDC criterion generalized to
+the control flow graph, which may not be acyclic as BDDs are.
+
+We first give a first example without cycles:
+
+<source name="code_to_be_covered">
+
+  /** 
+   * Sample method to illustrate path coverage.
+   */
+  public int paths(int i, int j) {
+    int k = 0;
+    if(i > 0) 
+      k = i;
+    if(j >0)
+      return j/k;
+    else 
+      return k/j;
+  }
+</source> 
+
+The following test cases provide branch coverage:
+<source name="branch_test_cases">
+  /** 
+   * Covers i<= 0 and j<=0
+   */
+  public void testPath01() {
+    assertEquals(0,paths(0,-2));
+  }
+
+  /** 
+   * Covers i> 0 and j>0
+   */
+  public void testPath02() {
+    assertEquals(2,paths(2,4));
+  }
+</source> 
+
+We need to add one more test to reach cyclomatic complexity criterion:
+<source name="other_test_cases">
+  /** 
+   * Covers i> 0 and j<=0
+   */
+  public void testPathCyclo() {
+    assertEquals(-5,paths(10,-2));
+  }
+</source> 
+
+And we need one more test (that will produce an error) to reach all
+simple paths coverage. 
+<source name="other_test_cases">
+  /** 
+   * Covers i <= 0 and j>0
+   */
+  public void testPathNonIterating() {
+    assertEquals(6,paths(-2,12));
+  }
+</source> 
+
+** All DU-paths coverage
+
+Data-flow criteria are based on the way variables are read and
+written in the code execution. The basic assumption is that defects
+may arise from improperly used/defined variables, for example if then
+exist some path of execution where a =null= object reference
+may be dereferenced. 
+
+The data-flow graph is extracted from the control-flow graph through
+analysis of variables usage. An instruction that references a variable
+(or a field) may be classified as:
+  - A *def-node* if it defines (stores, writes) some value
+    into the variable,
+  - A *p-use-node* if it uses (reads, dereferences) in a
+    predicate (test, branching instruction),
+  - A *c-use-node* if it uses the
+    variable in another kind of intsruction.
+
+A common criterion  is to require coverage of *all-du-paths*. Let
+$G=(V,E)$ be a control graph with distinguished nodes $s$ and $t$
+denoting start and end of the code. Let $X$ be a (finite) set of
+variable names, and let $l:V\times X \rightarrow \{D,U,UD\}$ be a
+typing partial function that, for each variable and each block (node)
+in the control graph, defines the status of this variable: $D$ for a
+block where the variable is defined, $U$ for a block where a variable
+is used and $UD$ for a variable which is used on block's entry and
+defined on block's exit. A *du-path* is $(d,u)$-path
+in  $G$ such that there exists some $x\inX$ with:
+  1. $f(d,x) =  D$,
+  1. $f(u,x) = U$ or $f(u,x) = UD$,
+  1. there is no $d'$ in the path between $d$ and $u$ such that
+     $f(d',x) = D$.
+
+We can illustrate *du-path-coverage* using the following example:
+
+
+** Call graph coverage
+
+When doing integration testing, we maybe interested in assessing test
+suite coverage over the potential interactions between integrated
+components. These potential interactions are embodied into the
+*call graph* of a set of classes (of interest) which is constructed from the
+control graphs of the method by connecting the calls made to classes
+of interest to the corresponding control graph.
+
+This simple scheme is complicated in object-oriented settings by the
+existence of virtual method calls which are resolved at runtime, by
+the distinction between static and instance methods.
+
+
+

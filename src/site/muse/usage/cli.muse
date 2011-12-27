@@ -1,0 +1,62 @@
+#title Command-line interface
+#author Arnaud Bailly 
+
+* Installing
+
+
+* Coverage test runner
+
+Here is the output from running =patchwork.sh -h= script (on Linux),
+displaying the various options available:
+
+<example>
+Usage: java oqube.patchwork.test.TestRunner [options]
+      -h|-? : displays this help
+      -c <cpentry>(:<cpentry>)*  : defines classpath for instrumented classes (.)
+      -t <cpentry>(:<cpentry>)*  : defines classpath for test classes (.)
+      -g <clname>                : name of generator class (CoverageInfo)
+      -p <regex>                 : pattern for test classes (*Test.class)
+      -P <regex>                 : exclusion pattern for test classes (^$)
+      -o <dir>                   : output directory for instruemented classes (none)
+      -r <clname>                : reporter class name (SimpleCoverageReporter)
+      -i                         : instrumentation mode
+      -x                         : xhtml output
+      -O                         : report and root covered source output directory (./patchwork)
+      -C <clname>(:<clname>)*    : list of method objective subclasses to compute coverage (AllEdgesObjective)
+      -s <cpentry>(:<cpentry>)*  : source files classpath (.)
+<cpentry> is either a directory, a jar or a zip file
+</example>
+
+The two most important options are =-c= and =-t= which respectively
+defines the *tested* and the *test* classpaths: 
+ - all classes within the tested classpath will be instrumented to
+   contain coverage probes,
+ - all classes within the test classes will be scanned for test cases
+   to execute. The precise classes set to be considered as potential test
+   cases is controlled by the =-p= and =-P= flags which respectively
+   define [[http://java.sun.com/j2se/1.5.0/docs/api/java/util/regex/Pattern.html][patterns]] following the Java syntax for inclusion and
+   exclusion: A class is included as test case if it matches inclusion
+   pattern and does not matches exclusion pattern.
+
+The flag =-o=  may be used to dump the instrumented classes to some
+directory. It may not be a good idea to override the non-instrumented
+classes. This option is interesting as a debugging tool or for
+studying how coverage is computed. 
+
+Option =-i= does not run the tests but just instrument classes. It is
+provided to allow coverage computation in two phases: first
+instrumentation, then test execution. 
+
+Other options control coverage reporting output: 
+ - option =-s= sets the sourcepath for generating HTML files that
+   represent the coverage at the source code level. It is useful only
+   with =-x= option which sets the output format to be XHTML,
+ - option =-C= allows defining which coverage objectives will be
+   computed and displayed. Several objectives may be given which will
+   be *composed* to give an overall coverage measure, and
+   [[./extending.muse][custom objectives]] may also be added to the list as class names
+   (provided they are in the classpath),
+ - option =-O= defines the output directory for reporting. If the
+   directory does not exist, it will be created. Source files, if
+   generated, will be in the =patchwork= subdirectory of this root
+   output directory.

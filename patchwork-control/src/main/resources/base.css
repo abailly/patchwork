@@ -1,0 +1,61 @@
+table {
+width: 100%;
+}
+
+th {
+text-align:left;
+}
+
+tr {
+  border: thin solid black;
+}
+
+.edge-coverage-middle {
+background-color: white;
+}
+
+.edge-coverage-low {
+background-color: red;
+}
+
+.edge-coverage-high {
+background-color: green;
+}
+
+.node-coverage-middle {
+background-color: white;
+}
+
+.node-coverage-low {
+background-color: red;
+}
+
+.node-coverage-high {
+background-color: green;
+}
+
+.low {
+  border: thin solid black;
+  width: 10%;
+}
+
+.hit {
+  border: thin solid black;
+  width: 10%;
+}
+
+.high {
+  border: thin solid black;
+  width: 10%;
+}
+
+.coverage {
+  border: thin solid black;
+  width: 10%;
+}
+
+.percent {
+  border: thin solid black;
+  width: 10%;
+  font-weight: bold;
+}

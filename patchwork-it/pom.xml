@@ -1,0 +1,48 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+
+ <parent>
+  <groupId>oqube.patchwork</groupId>
+  <artifactId>patchwork</artifactId>
+  <version>4-SNAPSHOT</version>
+ </parent>
+
+ <groupId>oqube.patchwork</groupId>
+ <artifactId>patchwork-it</artifactId>
+ <packaging>jar</packaging>
+ <version>4-SNAPSHOT</version>
+ <name>Integration tests</name>
+
+ <description>
+Integration tests for Patchwork.
+ </description>
+
+
+ <dependencies>
+  <dependency>
+   <groupId>oqube.patchwork</groupId>
+   <artifactId>patchwork-maven-plugin</artifactId>
+   <version>4-SNAPSHOT</version>
+  </dependency>
+  
+  <dependency>  
+   <groupId>oqube.patchwork</groupId>
+   <artifactId>patchwork-control</artifactId>
+   <version>4-SNAPSHOT</version>
+  </dependency>  
+ </dependencies>
+  
+ <build>
+  <plugins>
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <configuration>
+     <excludes>
+      <exclude>**/test*/**</exclude> 
+       </excludes>
+    </configuration>
+   </plugin>
+  </plugins>
+</build>
+</project>

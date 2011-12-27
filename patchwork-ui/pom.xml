@@ -1,0 +1,58 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+ <modelVersion>4.0.0</modelVersion>
+
+ <parent>
+  <groupId>oqube.patchwork</groupId>
+  <artifactId>patchwork</artifactId>
+  <version>4-SNAPSHOT</version>
+ </parent>
+
+ <groupId>oqube.patchwork</groupId>
+ <artifactId>patchwork-ui</artifactId>
+ <packaging>jar</packaging>
+ <version>4-SNAPSHOT</version>
+ <name>Control flow display</name>
+ <description>
+  A library for displaying control-flow graphs.
+ </description>
+
+
+ <dependencies>
+
+  <!-- for look and feel -->  
+  <dependency>
+   <groupId>jgoodies</groupId>
+   <artifactId>looks</artifactId>
+   <version>1.2.2</version>
+  </dependency>
+
+  <dependency>
+  <groupId>oqube.patchwork</groupId>
+  <artifactId>patchwork-control</artifactId>
+  <version>4-SNAPSHOT</version>
+  </dependency>  
+ </dependencies>
+ 
+ <reporting>
+  <plugins>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-project-info-reports-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-javadoc-plugin</artifactId>
+   </plugin>
+
+   <plugin>
+    <groupId>org.codehaus.mojo</groupId>
+    <artifactId>jxr-maven-plugin</artifactId>
+   </plugin>
+
+  </plugins>
+ </reporting>
+ 
+ 
+</project>
